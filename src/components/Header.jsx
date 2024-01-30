@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import logo from "../public/logo.png";
+import logo from "../public/logo3.png";
 import search from "../public/search.png";
 import cart from "../public/cart.png";
 
@@ -18,20 +18,16 @@ const Header = () => {
                     <div className={styles.category} key={category}>{category}</div>
                 ))}
 		<div className={styles.category}>supprt</div>
-		<div className={styles.category}>
 		<img
-                    className={styles.categoryImage}
+                    className={styles.logoImage}
                     src={search}
                     alt="Logo"
                 />
-		</div>
-		<div className={styles.category}>
 		<img
-                    className={styles.categoryImage}
+                    className={styles.cartImage}
                     src={cart}
                     alt="Logo"
                 />
-		</div>
             </div>
         </div>
     	);
