@@ -2,6 +2,7 @@ import styles from "./Header.module.css";
 import logo from "../public/logo3.png";
 import search from "../public/search.png";
 import cart from "../public/cart.png";
+import menu from "../public/menu.png";
 
 
 const Header = () => {
@@ -26,8 +27,13 @@ const Header = () => {
 		<img
                     className={styles.cartImage}
                     src={cart}
-                    alt="Logo"
+                    alt="Cart"
                 />
+		<img
+			className={styles.menuImage}
+			src={menu}
+		 	alt="Menu"
+		/>
             </div>
         </div>
     	);
