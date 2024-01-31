@@ -33,7 +33,7 @@
 	opacity: 0.5;
 	visibility: hidden;
 	transform: translateY(-10%);
-	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;; 
+	transition: opacity 0.1s ease, visibility 0.1s ease, transform 0.1s ease;; 
     z-index: 1000;
 }
 

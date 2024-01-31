@@ -17,6 +17,19 @@ const Header = () => {
 	dispatch(setSearchOn(true));
 	}, []);
 	console.log("search On", searchOn);
+
+	const handleSearchClick = () => {
+        	dispatch(setSearchOn(!searchOn));
+        	setSearchOn(!searchOn);
+	};
+
+    	const handleSearchMouseLeave = () => {
+	      if (searchOn) {
+        	    dispatch(setSearchOn(false));
+        	    setSearchOn(false);
+        	}
+	};
+
 	return (
         <div className={styles.header}>
             <div  className={styles.categories}>
@@ -32,7 +45,7 @@ const Header = () => {
                 ))}
 		<div className={styles.category}>support</div>
 		<img
-			onClick={() => dispatch(setSearchOn(!searchOn))}
+			onClick={handleSearchClick}
                     className={styles.searchImage}
                     src={search}
                     alt="Search"
@@ -50,7 +63,10 @@ const Header = () => {
 		 	alt="Menu"
 		/>
             </div>
-		<div className={`${styles.dropDownSearch} ${searchOn ? styles.hidden : ''}`}>
+		<div 
+		className={`${styles.dropDownSearch} ${searchOn ? styles.hidden : ''}`}
+		onMouseLeave={handleSearchMouseLeave}
+		>
 		<div><img
 				
                     className={styles.searchButton}
