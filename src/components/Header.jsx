@@ -19,7 +19,7 @@ const Header = () => {
 	console.log("search On", searchOn);
 	return (
         <div className={styles.header}>
-            <div className={styles.categories}>
+            <div  className={styles.categories}>
 		<a href="/">
                 <img
                     className={styles.logo}
@@ -32,30 +32,33 @@ const Header = () => {
                 ))}
 		<div className={styles.category}>support</div>
 		<img
+			onClick={() => dispatch(setSearchOn(!searchOn))}
                     className={styles.searchImage}
                     src={search}
                     alt="Search"
                 />
 		<img
+			
                     className={styles.cartImage}
                     src={cart}
                     alt="Cart"
                 />
 		<img
+			
 			className={styles.menuImage}
 			src={menu}
 		 	alt="Menu"
 		/>
             </div>
-		{
-			searchOn && <div className={styles.dropDownSearch}>
+		<div className={`${styles.dropDownSearch} ${searchOn ? styles.hidden : ''}`}>
 		<div><img
+				
                     className={styles.searchButton}
                     src={search}
                     alt="Search"
                 />
+		<input id="search" placeholder={`Search ezam`} type="text" className={styles.searchBar} />
 			</div></div>
-		}
         </div>
     	);
 };

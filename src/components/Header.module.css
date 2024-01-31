@@ -1,19 +1,46 @@
+.searchBar {
+	position: relative;
+	width: 60%;
+	left: 7%;
+	border: none;
+	background-color: #f5f5f5;
+	font-family: "Bellota";
+	font-size: 20px;
+	font-weight: 651;
+	outline: none;
+	padding: 10px;
+
+}
+
 .searchButton {
 	position: relative;
 	width: 50px;
 	height: 50px;
-	left: 20%;
+	left: 7%;
+	top: 15px;
 }
 
 .dropDownSearch {
 	position: relative;
 	width: 100%;
-	height: 200px;
+	height: 100px;
 	background-color: #f5f5f5;
 	width: 100%;
 	align-items: "center";
 	justify-content: "center";
+	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	opacity: 0.5;
+	visibility: hidden;
+	transform: translateY(-10%);
+	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;; 
+    z-index: 1000;
+}
 
+.dropDownSearch.hidden {
+  	opacity: 1;
+    	visibility: visible;
+	transform: translateY(0);
 }
 .menuImage {
 	display: none;
@@ -29,6 +56,10 @@
 	width: 30px;
 	height: 30px;
 	margin-left: 15px;
+	top: 5px;
+}
+.searchImage:hover {
+    cursor: pointer;
 }
 
 .cartImage {
@@ -37,6 +68,7 @@
 	width: 30px;
 	height: 30px;
 	margin-left: 15px;
+	top: 5px;
 }
 
 .logoContainer {
@@ -76,6 +108,7 @@
 	display: inline-block;
 	width: 30px;
 	height: 30px;
+	top: 5px;
 }
 @media(max-width: 1200px) {
 	.categories {
