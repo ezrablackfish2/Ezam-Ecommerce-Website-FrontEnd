@@ -1,7 +1,38 @@
+.arrowRight {
+	position: relative;
+	display: flex;
+	width: 50px;
+	opacity: 0.6;
+	left: 5%;
+	top: -70px;
+}
+.arrowRightHidden{
+	position: relative;
+	display: flex;
+	width: 50px;
+	opacity: 0.6;
+	left: 5%;
+	top: -70px;
+	opacity: 0;
+}
 .arrowLeft {
 	position: relative;
 	display: flex;
 	width: 50px;
+	top: 170px;
+	left: 85%;
+	opacity: 0.6;
+	z-index: 999;
+}
+.arrowLeftHidden {
+	position: relative;
+	display: flex;
+	width: 50px;
+	top: 170px;
+	left: 85%;
+	opacity: 0.6;
+	z-index: 999;
+	opacity: 0;
 }
 
 .scrollableImages {
@@ -18,8 +49,9 @@
 	position: relative;
 	display: flex;
 	margin-top: 100px;
-	margin-left: 5%;
 	overflow-x: hidden;
+	justify-content: center;
+	align-items: center;
 }
 
 
