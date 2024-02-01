@@ -93,7 +93,7 @@ const Header = () => {
 	};
 
 	return (
-        <div className={`${styles.header} ${searchOn || categoriesOn ? styles.white : ''}`}>
+        <div className={`${styles.header} ${searchOn || categoriesOn || cartOn? styles.white : ''}`}>
             <div className={styles.categories}>
 		<a href="/">
                 <img
