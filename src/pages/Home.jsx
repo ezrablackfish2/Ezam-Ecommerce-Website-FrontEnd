@@ -7,6 +7,8 @@ import { useEffect, useRef } from "react";
 import FetchProduct from "../fetch/product";
 import ezra from "../public/ezra.jpg";
 import amanuel from "../public/amanuel.webp";
+import arrowLeft from "../public/right.jpeg";
+import arrowRight from "../public/left.jpg";
 
 function Home() {
   const dispatch = useDispatch();
@@ -47,6 +49,16 @@ function Home() {
     return contentWidth - containerWidth;
   };
 
+const scrollLeft = () => {
+  const scrollStep = 50; // Adjust this value as needed
+  containerRef.current.scrollLeft -= scrollStep;
+};
+
+const scrollRight = () => {
+  const scrollStep = 50; // Adjust this value as needed
+  containerRef.current.scrollLeft += scrollStep;
+};	
+
   useEffect(() => {
     const categoryImagesElement = containerRef.current;
     if (categoryImagesElement) {
@@ -79,7 +91,8 @@ function Home() {
           </div>
         </div>
       </div>
-
+	
+	  <img className={styles.arrowLeft}src={arrowLeft} alt="Left Arrow" onClick={scrollLeft} />
       <div
         className={styles.categoryImages}
         onWheel={handleMouseWheel}
@@ -96,6 +109,7 @@ function Home() {
           ))}
         </div>
       </div>
+	  <img className={styles.arrowRight} src={arrowRight} alt="Right Arrow" onClick={scrollRight} />
       {products.map((product, index) => (
         <div key={product.id}>
           <div> Name {product.name}</div>

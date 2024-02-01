@@ -1,3 +1,9 @@
+.arrowLeft {
+	position: relative;
+	display: flex;
+	width: 50px;
+}
+
 .scrollableImages {
     display: flex; 
     flex-wrap: nowrap;
