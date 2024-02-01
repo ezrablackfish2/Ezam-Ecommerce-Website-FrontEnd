@@ -1,3 +1,48 @@
+.cartTexts {
+	position: relative;
+	display: inline-block;
+	top: -25px;
+}
+
+.cartImages {
+	position: relative;
+	display: inline-block;
+	width: 50px;
+	align-items: "center";
+}
+
+.cart1 {
+	padding: 10px;
+	margin: 10px;
+}
+.cart2 {
+	padding: 3px;
+	margin: 3px;
+	padding-left: 16px;
+}
+
+.cartDetails {
+	display: inline-block;
+	position: relative;
+	left: 10%;
+	width: 60%;
+	font-weight: 999;
+	font-size: 14px;
+}
+
+.cart {
+	display: inline-block;
+	position: relative;
+	left: 10%;
+	width: 60%;
+	font-weight: 999;
+	padding: 15px;
+	background-color: #ffffff;
+	font-family: 'Lilita One';
+	color: #555555;
+	font-size: 27px;
+}
+
 .subcategory {
 	display: inline-block;
 	position: relative;
@@ -6,6 +51,9 @@
 	font-weight: 999;
 	padding: 15px;
 	background-color: #ffffff;
+	font-family: 'Lilita One';
+	color: #555555;
+	font-size: 27px;
 }
 
 .searchBar {
@@ -20,6 +68,9 @@
 	outline: none;
 	padding: 10px;
 	margin-bottom: 50px;
+	font-family: 'Lilita One';
+	color: #777777;
+	font-weight: -999;
 
 }
 
@@ -35,7 +86,7 @@
     	position: absolute;
     	width: 100%;
     	height: auto;
-	height: 400px;
+	height: 500px;
 	background-color: #ffffff;
     	align-items: center;
     	justify-content: center;
@@ -80,6 +131,9 @@
 	height: 30px;
 	margin-left: 15px;
 	top: 5px;
+}
+.cartImage:hover {
+	cursor: pointer;
 }
 
 .logoContainer {

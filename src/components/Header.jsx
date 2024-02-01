@@ -1,12 +1,15 @@
 import styles from "./Header.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategoriesOn, setHoveredCategory, setCartOn, setSearchOn  } from "../features/headerSlice";
+import { useEffect } from "react";
+
 import logo from "../public/logo3.png";
 import search from "../public/search.png";
 import cart from "../public/cart.png";
 import menu from "../public/menu.png";
-import { useDispatch, useSelector } from "react-redux";
-import { setSearchOn } from "../features/headerSlice";
-import { setCategoriesOn, setHoveredCategory  } from "../features/headerSlice";
-import { useEffect } from "react";
+import order from "../public/order.png";
+import user from "../public/user.png";
+
 
 
 const Header = () => {
@@ -31,10 +34,17 @@ const Header = () => {
 	const searchOn = useSelector(state => state.headers.searchOn);
 	const categoriesOn = useSelector(state => state.headers.categoriesOn);
 	const hoveredCategory = useSelector(state => state.headers.hoveredCategory);
+	const cartOn = useSelector(state => state.headers.cartOn);
 
 	const handleSearchClick = () => {
         	dispatch(setCategoriesOn(false));
+		dispatch(setCartOn(false));
         	    dispatch(setSearchOn(!searchOn));
+	};
+	const handleCartClick = () => {
+        	dispatch(setCategoriesOn(false));
+        	dispatch(setSearchOn(false));
+		dispatch(setCartOn(!cartOn));
 	};
 
     	const handleSearchMouseLeave = () => {
@@ -42,18 +52,28 @@ const Header = () => {
         	    dispatch(setSearchOn(false));
         	}
         	dispatch(setCategoriesOn(false));
+		dispatch(setCartOn(false));
+	};
+	const handleCartMouseLeave = () => {
+	      if (searchOn) {
+        	    dispatch(setSearchOn(false));
+        	}
+		dispatch(setCartOn(false));
+        	dispatch(setCategoriesOn(false));
 	};
 	const handleCategory = (category) => {
         	dispatch(setCategoriesOn(true));
 		dispatch(setHoveredCategory(category));
         	dispatch(setSearchOn(false));
+		dispatch(setCartOn(false));
 
 	};
 	const handleCategoryMouseLeave = () => {
 	      if (categoriesOn) {
         	    dispatch(setCategoriesOn(false));
-        	    dispatch(setSearchOn(false));
         	}
+        	    dispatch(setSearchOn(false));
+		    dispatch(setCartOn(false));
 	};
 
 	return (
@@ -79,7 +99,8 @@ const Header = () => {
                 />
 		
 		<img
-			
+		    onMouseEnter={handleCartMouseLeave}
+		    onClick={handleCartClick}	
                     className={styles.cartImage}
                     src={cart}
                     alt="Cart"
@@ -102,6 +123,40 @@ const Header = () => {
                 />
 		<input id="search" placeholder={`Search ezam`} type="text" className={styles.searchBar} />
 		</div></div>
+
+		<div 
+		className={`${styles.dropDownSearch} ${cartOn ? styles.visible : ''}`}
+		onMouseLeave={handleSearchMouseLeave}
+		>
+		<div className={styles.cart}>
+		Your Bag is Empty
+		</div>
+		<div className={styles.cartDetails}>
+		<div className={styles.cart1}>
+		sign in to see what you have got
+		</div>
+		<div className={styles.cart2}> My porfile
+		<div className={styles.cart2}>
+		<img
+			className={styles.cartImages}
+			src={order}>
+		</img>
+		<div className={styles.cartTexts}>
+			Orders
+		</div>
+		</div>
+		<div className={styles.cart2}>
+		<img
+			className={styles.cartImages}
+			src={user}>
+		</img>
+		<div className={styles.cartTexts}>
+			Sign In
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 <div 
 		className={`${styles.dropDownSearch} ${categoriesOn ? styles.visible : ''}`}
 		onMouseLeave={handleCategoryMouseLeave}

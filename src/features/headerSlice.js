@@ -7,6 +7,7 @@ const headerSlice = createSlice({
 	initialState: {
 		searchOn: false,
 		categoriesOn: false,
+		cartOn: false,
 		hoveredCategory: [],
 
 	},
@@ -21,6 +22,10 @@ const headerSlice = createSlice({
 		setHoveredCategory: (state,action) => {
 			state.hoveredCategory = action.payload;	
 		},
+		setCartOn: (state,action) => {
+			state.cartOn = action.payload;	
+		},
+
 
 	}
 });
@@ -28,4 +33,5 @@ const headerSlice = createSlice({
 export const setSearchOn = headerSlice.actions.setSearchOn;
 export const setCategoriesOn = headerSlice.actions.setCategoriesOn;
 export const setHoveredCategory = headerSlice.actions.setHoveredCategory;
+export const setCartOn = headerSlice.actions.setCartOn;
 export default headerSlice.reducer;
