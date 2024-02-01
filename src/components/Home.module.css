@@ -1,3 +1,22 @@
+.scrollableImages {
+    display: flex; 
+    flex-wrap: nowrap;
+}
+
+.categoryImage {
+	height: 100px;
+	margin-left: 2%;
+}
+
+.categoryImages {
+	position: relative;
+	display: flex;
+	margin-top: 100px;
+	margin-left: 5%;
+	overflow-x: hidden;
+}
+
+
 .specialistLink {
 	text-decoration: none;
 }
