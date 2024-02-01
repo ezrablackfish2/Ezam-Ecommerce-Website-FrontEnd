@@ -20,7 +20,8 @@ const Header = () => {
   "Books": ["Fiction", "Non-Fiction", "Children's Books", "Self-Help", "Cookbooks"],
   "Toys": ["Action Figures", "Board Games", "Dolls", "Puzzles", "Educational Toys"],
   "Automotive": ["Car Parts", "Accessories", "Tools", "Car Care", "Electronics"],
-  "Construction": ["Power Tools", "Hand Tools", "Building Materials", "Safety Gear", "Hardware"]
+  "Construction": ["Power Tools", "Hand Tools", "Building Materials", "Safety Gear", "Hardware"],
+  "Support": ["Contact Us", "Help", "About"]
 };
 
 
@@ -30,33 +31,37 @@ const Header = () => {
 	const searchOn = useSelector(state => state.headers.searchOn);
 	const categoriesOn = useSelector(state => state.headers.categoriesOn);
 	const hoveredCategory = useSelector(state => state.headers.hoveredCategory);
-	console.log(hoveredCategory);
 
 	const handleSearchClick = () => {
-        	dispatch(setSearchOn(!searchOn));
+        	dispatch(setCategoriesOn(false));
+        	    dispatch(setSearchOn(!searchOn));
 	};
 
     	const handleSearchMouseLeave = () => {
 	      if (searchOn) {
         	    dispatch(setSearchOn(false));
         	}
+        	dispatch(setCategoriesOn(false));
 	};
 	const handleCategory = (category) => {
         	dispatch(setCategoriesOn(true));
 		dispatch(setHoveredCategory(category));
+        	dispatch(setSearchOn(false));
 
 	};
 	const handleCategoryMouseLeave = () => {
 	      if (categoriesOn) {
         	    dispatch(setCategoriesOn(false));
+        	    dispatch(setSearchOn(false));
         	}
 	};
 
 	return (
-        <div className={styles.header}>
-            <div  className={styles.categories}>
+        <div className={`${styles.header} ${searchOn || categoriesOn ? styles.white : ''}`}>
+            <div className={styles.categories}>
 		<a href="/">
                 <img
+		    onMouseEnter={handleCategoryMouseLeave}
                     className={styles.logo}
                     src={logo}
                     alt="Logo"
@@ -65,9 +70,9 @@ const Header = () => {
                 {Object.keys(categories).map((category) => (
 			<div onMouseEnter={() => handleCategory(category)} className={styles.category} key={category}>{category}</div>
 		))}
-		<div className={styles.category}>support</div>
 		<img
-			onClick={handleSearchClick}
+	            onMouseEnter={handleCategoryMouseLeave}
+		    onClick={handleSearchClick}
                     className={styles.searchImage}
                     src={search}
                     alt="Search"
@@ -90,8 +95,7 @@ const Header = () => {
 		className={`${styles.dropDownSearch} ${searchOn ? styles.visible : ''}`}
 		onMouseLeave={handleSearchMouseLeave}
 		>
-		<div><img
-				
+		<div><img		
                     className={styles.searchButton}
                     src={search}
                     alt="Search"
@@ -105,12 +109,11 @@ const Header = () => {
 		
 		{
 			categories[hoveredCategory] && categories[hoveredCategory].map((subcategory, index) => (
-          <div key={`${index}-${subcategory}`}>{subcategory}</div>
+          <div key={`${index}-${subcategory}`} className={styles.subcategory}>{subcategory}</div>
         ))
 		}
 
-		<div>
-		</div></div>
+		</div>
 		
         </div>
     	);
