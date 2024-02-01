@@ -5,7 +5,9 @@ import { createSlice } from "@reduxjs/toolkit"
 const headerSlice = createSlice({
 	name: "headers",
 	initialState: {
-		searchOn: true
+		searchOn: false,
+		categoriesOn: false,
+		hoveredCategory: [],
 
 	},
 	reducers: {
@@ -13,8 +15,17 @@ const headerSlice = createSlice({
 		setSearchOn: (state, action) => {
 			state.searchOn = action.payload;
 		},
+		setCategoriesOn: (state,action) => {
+			state.categoriesOn = action.payload;	
+		},
+		setHoveredCategory: (state,action) => {
+			state.hoveredCategory = action.payload;	
+		},
+
 	}
 });
 
 export const setSearchOn = headerSlice.actions.setSearchOn;
+export const setCategoriesOn = headerSlice.actions.setCategoriesOn;
+export const setHoveredCategory = headerSlice.actions.setHoveredCategory;
 export default headerSlice.reducer;

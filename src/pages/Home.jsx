@@ -15,10 +15,10 @@ function Home() {
 		<div>Home Page Of Ezam website </div>
 		<div>
             	    {products.map((product, index) => (
-			<>
-            	        <div key={index}>Name {product.name}</div>
-            	        <div key={index}>Price {product.price}</div>
-			</>
+			<div key={product.id}>
+            	        <div> Name {product.name}</div>
+            	        <div> Price {product.price}</div>
+			</div>
             	    ))}
             	</div>
 	</>
