@@ -1,3 +1,21 @@
+.menuCategory {
+	display: inline-block;
+	position: relative;
+	left: 10%;
+	width: 60%;
+	font-weight: 999;
+	padding: 10px;
+	background-color: #ffffff;
+	font-family: 'Lilita One';
+	color: #555555;
+	font-size: 20px;
+}
+
+.menuCategory:hover {
+	cursor:pointer;
+	color: #757575;
+}
+
 .cartTexts {
 	position: relative;
 	display: inline-block;
@@ -10,6 +28,9 @@
 	width: 50px;
 	align-items: "center";
 }
+.cartImages:hover {
+	cursor: pointer;
+}
 
 .cart1 {
 	padding: 10px;
@@ -20,6 +41,11 @@
 	margin: 3px;
 	padding-left: 16px;
 }
+.cartTexts:hover {
+	color: #757575;
+	cursor: pointer;
+}
+
 
 .cartDetails {
 	display: inline-block;
@@ -54,6 +80,10 @@
 	font-family: 'Lilita One';
 	color: #555555;
 	font-size: 27px;
+}
+.subcategory:hover{
+	color: #959595;
+	cursor: pointer;
 }
 
 .searchBar {
@@ -104,14 +134,27 @@
     	visibility: visible;
     	transform: translateY(0);
 }
+
+.dropDownSearch.menu {
+	top: 3px;
+    	opacity: 1;
+    	visibility: visible;
+    	transform: translateY(0);
+}
+
 .menuImage {
 	display: none;
 	position: relative;
 	width: 27px;
 	height: 27px;
-	top: 0px;
+	top: 5px;
 
 }
+
+.menuImage:hover {
+	cursor: pointer;
+}
+
 .searchImage {
 	position: relative;
 	display: inline-block;

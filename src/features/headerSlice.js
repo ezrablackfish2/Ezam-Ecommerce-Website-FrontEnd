@@ -8,6 +8,7 @@ const headerSlice = createSlice({
 		searchOn: false,
 		categoriesOn: false,
 		cartOn: false,
+		menuOn: false,
 		hoveredCategory: [],
 
 	},
@@ -25,6 +26,9 @@ const headerSlice = createSlice({
 		setCartOn: (state,action) => {
 			state.cartOn = action.payload;	
 		},
+		setMenuOn: (state, action) => {
+			state.menuOn = action.payload;
+		},
 
 
 	}
@@ -34,4 +38,5 @@ export const setSearchOn = headerSlice.actions.setSearchOn;
 export const setCategoriesOn = headerSlice.actions.setCategoriesOn;
 export const setHoveredCategory = headerSlice.actions.setHoveredCategory;
 export const setCartOn = headerSlice.actions.setCartOn;
+export const setMenuOn = headerSlice.actions.setMenuOn;
 export default headerSlice.reducer;

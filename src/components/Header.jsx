@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategoriesOn, setHoveredCategory, setCartOn, setSearchOn  } from "../features/headerSlice";
+import { setCategoriesOn, setHoveredCategory, setCartOn, setSearchOn, setMenuOn  } from "../features/headerSlice";
 import { useEffect } from "react";
 
 import logo from "../public/logo3.png";
@@ -35,6 +35,7 @@ const Header = () => {
 	const categoriesOn = useSelector(state => state.headers.categoriesOn);
 	const hoveredCategory = useSelector(state => state.headers.hoveredCategory);
 	const cartOn = useSelector(state => state.headers.cartOn);
+	const menuOn = useSelector(state => state.headers.menuOn);
 
 	const handleSearchClick = () => {
         	dispatch(setCategoriesOn(false));
@@ -45,6 +46,13 @@ const Header = () => {
         	dispatch(setCategoriesOn(false));
         	dispatch(setSearchOn(false));
 		dispatch(setCartOn(!cartOn));
+	};
+
+	const handleMenuClick = () => {
+        	dispatch(setCategoriesOn(false));
+        	dispatch(setSearchOn(false));
+		dispatch(setCartOn(false));
+		dispatch(setMenuOn(!menuOn))
 	};
 
     	const handleSearchMouseLeave = () => {
@@ -74,6 +82,14 @@ const Header = () => {
         	}
         	    dispatch(setSearchOn(false));
 		    dispatch(setCartOn(false));
+	};
+	const handleMenuMouseLeave = () => {
+	      if (categoriesOn) {
+        	    dispatch(setCategoriesOn(false));
+        	}
+        	    dispatch(setSearchOn(false));
+		    dispatch(setCartOn(false));
+		    dispatch(setMenuOn(false));
 	};
 
 	return (
@@ -106,7 +122,8 @@ const Header = () => {
                     alt="Cart"
                 />
 		<img
-			
+			onMouseEnter={handleCartMouseLeave}
+		    	onClick={handleMenuClick}	
 			className={styles.menuImage}
 			src={menu}
 		 	alt="Menu"
@@ -157,7 +174,7 @@ const Header = () => {
 		</div>
 		</div>
 		</div>
-<div 
+		<div 
 		className={`${styles.dropDownSearch} ${categoriesOn ? styles.visible : ''}`}
 		onMouseLeave={handleCategoryMouseLeave}
 		>
@@ -167,6 +184,16 @@ const Header = () => {
           <div key={`${index}-${subcategory}`} className={styles.subcategory}>{subcategory}</div>
         ))
 		}
+
+		</div>
+		<div 
+		className={`${styles.dropDownSearch} ${menuOn ? styles.menu : ''}`}
+		onMouseLeave={handleMenuMouseLeave}
+		>
+		
+		{Object.keys(categories).map((category) => (
+			<div onMouseEnter={() => handleCategory(category)} className={styles.menuCategory} key={category}>{category}</div>
+		))}
 
 		</div>
 		
