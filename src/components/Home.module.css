@@ -282,6 +282,10 @@
 	.productImage {
 		margin-bottom: 20px;
 	}
+	.lowerSpecialistText {
+		top: -14px;
+		left: 50px;
+	}
 }
 
 

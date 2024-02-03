@@ -1,23 +1,22 @@
-.table1 {
+.table {
+	margin-top: 20px;
+	padding: 10px;
 	position: relative;
 	display: inline-block;
-	margin: 10px;
 }
 
-.cell1 {
+.cell {
 	position: relative;
 	display: inline-block;
-	margin: 10px;
-	margin-right: 7%;
+	margin-right: 70px;
 }
 
-.footer1 {
+.footer {
 	position: relative;
 	display: inline-block;
-	width: 90%;
+	width: 100%;
 	background-color: #000000;
 	color: #ffffff;
-	padding: 15px;
 	font-family: "Gugi";
 	font-family: "Homemade Apple";
 	font-family: "Lilita One";
