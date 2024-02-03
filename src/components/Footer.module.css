@@ -1,0 +1,26 @@
+.table1 {
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+}
+
+.cell1 {
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+	margin-right: 7%;
+}
+
+.footer1 {
+	position: relative;
+	display: inline-block;
+	width: 90%;
+	background-color: #000000;
+	color: #ffffff;
+	padding: 15px;
+	font-family: "Gugi";
+	font-family: "Homemade Apple";
+	font-family: "Lilita One";
+	font-family: "Playball";
+	font-family: "Montserrat Alternates";
+}
