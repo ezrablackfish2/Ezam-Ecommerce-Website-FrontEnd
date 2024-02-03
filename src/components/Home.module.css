@@ -155,4 +155,10 @@
 	.specialist {
 		display: none;
 	}
+	.categoryTitle {
+		font-size: 35px;
+	}
+	.arrowLeft {
+		left: 85%;
+	}
 }
