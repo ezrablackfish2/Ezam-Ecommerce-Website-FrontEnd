@@ -2,6 +2,7 @@ import styles from "../components/Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductsData } from "../features/productSlice";
 import { setScrollPosition, setArrows } from "../features/homeSlice";
+import { setHoveredCategory } from "../features/headerSlice";
 import { useEffect, useRef } from "react";
 
 import FetchProduct from "../fetch/product";
@@ -26,12 +27,25 @@ function Home() {
 	const products = useSelector((state) => state.products.productsData);
 	const arrows = useSelector((state) => state.home.arrows);
 	const scrollPosition = useSelector((state) => state.home.scrollPosition);
+	const hoveredCategory = useSelector((state) => state.headers.hoveredCategory);
 	FetchProduct();
 	const containerRef = useRef(null);
 	const contentRef = useRef(null);
 
 
-	const categories = [electronics, apparel, kitchen, beauty, outdoors, health, books, toys, automotive, construction]
+	const categories = [
+		    { "category": "Electronics", "image": electronics }, 
+		    { "category": "Apparel", "image": apparel }, 
+		    { "category": "Kitchen", "image": kitchen }, 
+		    { "category": "Beauty", "image": beauty }, 
+		    { "category": "Outdoors", "image": outdoors }, 
+		    { "category": "Health", "image": health }, 
+		    { "category": "Books", "image": books }, 
+		    { "category": "Toys", "image": toys }, 
+		    { "category": "Automotive", "image": automotive }, 
+		    { "category": "Construction", "image": construction }
+		];
+
 
 	const handleMouseWheel = (event) => {
 		event.preventDefault();
@@ -85,6 +99,7 @@ function Home() {
 		}
 	}, [scrollPosition]);
 
+
 	return (
 	<div className={styles.home}>
 	<div className={styles.promotion}>
@@ -92,7 +107,7 @@ function Home() {
 	</div>
 	<div className={styles.category}>
 		<div className={styles.categoryTitle}>
-		<span className={styles.storeText}>Shop. </span> Ultimate destination for purchasing items you adore.
+		<span className={styles.storeText}>Shop. </span> { hoveredCategory.length > 0 ? <span> {hoveredCategory} </span> : <span> Ultimate destination for purchasing items you adore.</span>}
 		</div>
 		<div className={styles.specialist}>
 		<img className={styles.specialistImage} src={ezra} alt="Ezra" />
@@ -123,9 +138,10 @@ function Home() {
 		{
 			categories.map((image, index) => (
 		<img
+		onClick={() => dispatch(setHoveredCategory(image.category))}
 		key={index}
 		className={styles.categoryImage}
-		src={image}
+		src={image.image}
 		alt={`Image ${index}`}
 		/>
 		))}

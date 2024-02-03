@@ -44,6 +44,9 @@
 	height: 150px;
 	margin-left: 4%;
 }
+.categoryImage {
+	cursor: pointer;
+}
 
 .categoryImages {
 	position: relative;
