@@ -3,8 +3,9 @@
 	display: inline-block;
 	left: 7%;
 	margin-top: -10px;
-	top: -25px;
+	top: 7px;
 	font-family: "Caveat";
+	margin-bottom: 10px;
 }
 
 .productName {
@@ -22,6 +23,9 @@
 	margin-top: 5px;
 	height: 100px;
 	font-family: "Black Ops One";
+	max-height: calc(2 * 1.2em);
+        overflow: hidden;
+        text-overflow: ellipsis;
 }
 
 
