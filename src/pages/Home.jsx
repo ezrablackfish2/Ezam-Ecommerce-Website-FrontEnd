@@ -153,13 +153,28 @@ function Home() {
 			:
 			<img className={styles.arrowRightHidden} src={arrowRight} alt="Right Arrow" onClick={scrollLeft} />
 		}
-		{products.map((product, index) => (
-		<div key={product.id}>
-		<div> Name {product.name}</div>
-		<div> Price {product.price}</div>
+	<div className={styles.latest}>
+		<div className={styles.latestText}>
+			The latest. Take a look at what’s new, right now.
 		</div>
-		))}
+		<div className={styles.latestProducts}>
+		{
+			products.map((product, index) => (
+		<div className={`${styles.latestProduct} ${index % 2 === 0 ? styles.white : styles.black}`} key={product.id}>
+		<div className={styles.productName}>{product.name}</div>
+		<div className={styles.productDescription}> {product.description}</div>
+		<div className={styles.prodcutPrice}>From {product.price}  Birr</div>
+		<img
+			className={styles.productImage}
+			src={electronics}
+				/>
 		</div>
+		))
+		}
+
+		</div>
+	</div>
+				</div>
 		);
 	}
 

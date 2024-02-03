@@ -1,3 +1,82 @@
+.prodcutPrice {
+	position: relative;
+	display: inline-block;
+	left: 7%;
+	margin-top: -10px;
+	top: -25px;
+	font-family: "Caveat";
+}
+
+.productName {
+	position: relative;
+	display: inline-block;
+	left: 7%;
+	margin-top: 25px;
+}
+
+.productDescription {
+	position: relative;
+	display: flex;
+	left: 7%;
+	font-size: 25px;
+	margin-top: 5px;
+	height: 100px;
+	font-family: "Black Ops One";
+}
+
+
+
+.productImage {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 60%;
+	left: 10%;
+}
+
+.latestProduct {
+	position: relative;
+	display: inline-block;;
+	width: 370px;
+	height: 500px;
+	border-radius: 20px 20px 20px 20px;
+	background-color: #ffffff;
+	margin: 1%;
+	font-family: "Chakra Petch";
+	font-family: "Rajdhani";
+	font-weight: 999;
+}
+.latestProduct.black {
+	background-color: #000000;
+	color: #ffffff;
+}
+.latestProduct.white {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.latestProducts {
+	position: relative;
+	display: block;
+	position: relative;
+	width: 100%;
+}
+.latestText {
+	position: relative;
+	display: block;
+	font-family: "Rajdhani";
+	font-size: 35px;
+}
+
+.latest {
+	position: relative;
+	display: inline-block;
+	left: 7%;
+	width: 90%;
+}
+
 .arrowRight {
 	position: relative;
 	display: flex;
@@ -157,6 +236,9 @@
 	}
 	.categoryTitle {
 		font-size: 35px;
+	}
+	.latestText {
+		font-size: 25px;
 	}
 	.arrowLeft {
 		left: 85%;
