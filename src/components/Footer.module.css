@@ -1,3 +1,62 @@
+.locationImage {
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	margin-right: 7px;
+}
+
+.locationImage:hover {
+	cursor: pointer;
+}
+.country {
+	margin-right: 5%;
+	font-weight: 999;
+	font-size: 14px;
+	top: -50px;
+}
+
+.country:hover {
+	cursor: pointer;
+}
+
+
+.copyright {
+	margin-top: 100px;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 13px;
+}
+
+.title {
+	font-weight: 999;
+}
+.body {
+	font-size: 15px;
+}
+
+.socialImage {
+	position: relative;
+	display: inline-block;
+	width: 50px;
+}
+.socialImage:hover {
+	cursor: pointer;
+}
+
+.social {
+	position: relative;
+	display: inline-block;
+	width: 20%;
+	margin-left: 80%;
+	top: -185px;
+}
+
+.footers {
+	display: none;
+}
+
 .table {
 	margin-top: 20px;
 	padding: 10px;
@@ -8,8 +67,15 @@
 .cell {
 	position: relative;
 	display: inline-block;
-	margin-right: 70px;
+	margin-right: 100px;
+	width: 150px;
+	margin-bottom: 20px;
 }
+
+.cell:hover {
+	cursor: pointer;
+}
+
 
 .footer {
 	position: relative;
@@ -22,4 +88,78 @@
 	font-family: "Lilita One";
 	font-family: "Playball";
 	font-family: "Montserrat Alternates";
+}
+
+@media(max-width: 1131px) {
+}
+
+@media(max-width: 1017px) {
+	.social {
+		position: relative;
+		top: 5%;
+		display: block;
+		left: -70%;
+		width: 70%;
+		margin-top: 3%;
+	}
+}
+
+
+@media(max-width: 800px) {
+	.cell {
+		margin-right: 50px;
+	}
+}
+
+@media (max-width: 647px) {
+	.table {
+		display: none;
+	}
+	.footersAll {
+		display: inline-block;
+		position: relative;
+		margin-top: 30px;
+		margin-left: 30px;
+		width: 50%;
+	}
+	.footers {
+		display: inline-block;
+		position: relative;
+		padding-left: 10%;
+		width: 80%;
+		margin: 1%;
+	}
+	.footerOne {
+		border-width: 3px;
+		border-color: #ffffff;
+		width: 70%;
+		display: inline-block;
+		position: relative;
+		margin: -5%;
+	}
+	.footerOne:hover {
+		cursor: pointer;
+	}
+	.footerEach {
+		position: relative;
+		display: inline-block;
+		width: 70%;
+		left: 3%;
+	}
+	.footerEach:hover {
+		cursor: pointer;
+	}
+	
+	.copyright {
+		position: relative;
+		display: inline-block;
+		left: 9%;
+		justify-content: left;
+		align-items: left;
+		bottom: 50px;
+	}
+	.country {
+		display: block;
+	}
+
 }
