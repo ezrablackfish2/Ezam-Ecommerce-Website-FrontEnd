@@ -1,3 +1,32 @@
+.prevbutton {
+	border: none;
+	font-family: "Caveat";
+	font-family: "Montserrat Alternates";
+	font-size: 30px;
+}
+.prevbutton:hover{
+	cursor: pointer;
+	color: #ff0000;
+}
+
+.nextbutton {
+	border: none;
+	font-family: "Caveat";
+	font-family: "Montserrat Alternates";
+	font-size: 30px;
+}
+.nextbutton:hover{
+	cursor: pointer;
+	color: #ff0000;
+}
+
+.pagination {
+	display: inline-block;
+	position: relative;
+	width: 80%;
+	margin: 10%;
+}
+
 .prodcutPrice {
 	position: relative;
 	display: inline-block;

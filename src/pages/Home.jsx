@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProductsData } from "../features/productSlice";
 import { setScrollPosition, setArrows } from "../features/homeSlice";
 import { setHoveredCategory } from "../features/headerSlice";
+import { setCurrentPage } from "../features/homeSlice";
 import { useEffect, useRef } from "react";
 
 import FetchProduct from "../fetch/product";
@@ -28,9 +29,11 @@ function Home() {
 	const arrows = useSelector((state) => state.home.arrows);
 	const scrollPosition = useSelector((state) => state.home.scrollPosition);
 	const hoveredCategory = useSelector((state) => state.headers.hoveredCategory);
+	const currentPage = useSelector((state) => state.home.currentPage);
 	FetchProduct();
 	const containerRef = useRef(null);
 	const contentRef = useRef(null);
+	const productsPerPage = 20;
 
 
 	const categories = [
@@ -100,6 +103,29 @@ function Home() {
 	}, [scrollPosition]);
 
 
+	const totalProducts = products.length;
+	const totalPages = Math.ceil(totalProducts / productsPerPage);
+	const handlePageChange = (page: any) => {
+	    		dispatch(setCurrentPage(page));
+		};
+	const handleNextPage = () => {
+		if (currentPage < totalPages) {
+	      		dispatch(setCurrentPage(currentPage + 1));
+			}
+	  	};
+	const handlePrevPage = () => {
+		if (currentPage > 1) {
+			dispatch(setCurrentPage(currentPage - 1));
+			}
+	  	};
+	const startIndex = (currentPage - 1) * productsPerPage;
+	const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+	const currentProducts = products.slice(startIndex, endIndex);
+
+	console.log(currentProducts);
+	console.log(products);
+	console.log(currentPage);
+
 	return (
 	<div className={styles.home}>
 	<div className={styles.promotion}>
@@ -159,7 +185,7 @@ function Home() {
 		</div>
 		<div className={styles.latestProducts}>
 		{
-			products.map((product, index) => (
+			currentProducts.map((product, index) => (
 		<div className={`${styles.latestProduct} ${index % 2 === 0 ? styles.white : styles.black}`} key={product.id}>
 		<div className={styles.productName}>{product.name}</div>
 		<div className={styles.productDescription}> {product.description}</div>
@@ -173,8 +199,16 @@ function Home() {
 		}
 
 		</div>
-	</div>
-				</div>
+		</div>
+		<div className={styles.pagination}>
+		            {currentPage > 1 && (
+				              <button className={styles.prevbutton} onClick={handlePrevPage}>Previous</button>
+				            )}
+		            {currentPage < totalPages && (
+				              <button className={styles.nextbutton} onClick={handleNextPage}>Next</button>
+				            )}
+		</div>
+		</div>
 		);
 	}
 

@@ -5,6 +5,7 @@ const homeSlice = createSlice({
 	initialState: {
 		scrollPosition : 0,
 		arrows: false,
+		currentPage: 1,
 	},
 	reducers: {
 		
@@ -14,9 +15,13 @@ const homeSlice = createSlice({
 		setArrows: (state, action) => {
 			state.arrows = action.payload;
 		},
+		setCurrentPage: (state, action) => {
+			state.currentPage = action.payload;
+		},
 	}
 });
 
 export const setScrollPosition = homeSlice.actions.setScrollPosition;
 export const setArrows = homeSlice.actions.setArrows;
+export const setCurrentPage = homeSlice.actions.setCurrentPage;
 export default homeSlice.reducer;
