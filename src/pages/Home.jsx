@@ -9,6 +9,17 @@ import ezra from "../public/ezra.jpg";
 import amanuel from "../public/amanuel.webp";
 import arrowLeft from "../public/right.png";
 import arrowRight from "../public/left.png";
+import electronics from "../public/electronics.png";
+import apparel from "../public/apparel.png";
+import kitchen from "../public/kitchen.png";
+import beauty from "../public/beauty.png";
+import outdoors from "../public/outdoors.png";
+import health from "../public/health.png";
+import books from "../public/books.png";
+import toys from "../public/toys.png";
+import automotive from "../public/automotive.png";
+import construction from "../public/construction.png";
+
 
 function Home() {
 	const dispatch = useDispatch();
@@ -18,6 +29,9 @@ function Home() {
 	FetchProduct();
 	const containerRef = useRef(null);
 	const contentRef = useRef(null);
+
+
+	const categories = [electronics, apparel, kitchen, beauty, outdoors, health, books, toys, automotive, construction]
 
 	const handleMouseWheel = (event) => {
 		event.preventDefault();
@@ -78,7 +92,7 @@ function Home() {
 	</div>
 	<div className={styles.category}>
 		<div className={styles.categoryTitle}>
-		<span className={styles.storeText}>Shop. </span> ultimate destination for purchasing items you adore.
+		<span className={styles.storeText}>Shop. </span> Ultimate destination for purchasing items you adore.
 		</div>
 		<div className={styles.specialist}>
 		<img className={styles.specialistImage} src={ezra} alt="Ezra" />
@@ -106,7 +120,8 @@ function Home() {
 		ref={containerRef}
 	>
 	<div className={styles.scrollableImages} ref={contentRef}>
-		{[ezra, ezra, ezra, ezra, ezra].map((image, index) => (
+		{
+			categories.map((image, index) => (
 		<img
 		key={index}
 		className={styles.categoryImage}

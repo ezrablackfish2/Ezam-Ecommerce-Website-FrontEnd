@@ -3,8 +3,8 @@
 	display: flex;
 	width: 50px;
 	opacity: 0.6;
-	left: 5%;
-	top: -70px;
+	left: 1%;
+	top: -120px;
 }
 .arrowRightHidden{
 	position: relative;
@@ -20,7 +20,7 @@
 	display: flex;
 	width: 50px;
 	top: 170px;
-	left: 85%;
+	left: 95%;
 	opacity: 0.6;
 	z-index: 999;
 }
@@ -41,8 +41,8 @@
 }
 
 .categoryImage {
-	height: 100px;
-	margin-left: 2%;
+	height: 150px;
+	margin-left: 4%;
 }
 
 .categoryImages {
@@ -50,8 +50,9 @@
 	display: flex;
 	margin-top: 100px;
 	overflow-x: hidden;
-	justify-content: center;
-	align-items: center;
+	justify-content: left;
+	align-items: left;
+	left: 0%;
 }
 
 
