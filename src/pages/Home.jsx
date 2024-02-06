@@ -23,6 +23,7 @@ import automotive from "../public/automotive.png";
 import construction from "../public/construction.png";
 import { listProducts } from '../actions/productActions'
 import { useNavigate, useLocation } from "react-router-dom"
+import Rating from '../components/Rating'
 
 
 function Home() {
@@ -45,7 +46,6 @@ function Home() {
         dispatch(listProducts(keyword))
 
     	}, [dispatch, keyword])
-	console.log("product list", productList);
 
 
 	const categories = [
@@ -194,15 +194,20 @@ function Home() {
 		</div>
 		<div className={styles.latestProducts}>
 		{
-			currentProducts.map((product, index) => (
+			productList.products.map((product, index) => (
 		<div className={`${styles.latestProduct} ${index % 2 === 0 ? styles.white : styles.black}`} key={product.id}>
+		<a href={`/product/${product._id}`}>
 		<div className={styles.productName}>{product.name}</div>
 		<div className={styles.productDescription}> {product.description}</div>
 		<div className={styles.prodcutPrice}>From {product.price}  Birr</div>
 		<img
 			className={styles.productImage}
-			src={electronics}
+			src={`https://ezam-ecommerce.onrender.com/${product.image}`}
 				/>
+		<div className="my-3">
+                        <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
+                    </div>
+		</a>
 		</div>
 		))
 		}
