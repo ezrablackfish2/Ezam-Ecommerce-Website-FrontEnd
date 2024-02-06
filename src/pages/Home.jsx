@@ -21,11 +21,15 @@ import books from "../public/books.png";
 import toys from "../public/toys.png";
 import automotive from "../public/automotive.png";
 import construction from "../public/construction.png";
+import { listProducts } from '../actions/productActions'
+import { useNavigate, useLocation } from "react-router-dom"
 
 
 function Home() {
+	const location = useLocation();
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products.productsData);
+	const productList = useSelector(state => state.productList)
 	const arrows = useSelector((state) => state.home.arrows);
 	const scrollPosition = useSelector((state) => state.home.scrollPosition);
 	const hoveredCategory = useSelector((state) => state.headers.hoveredCategory);
@@ -34,6 +38,14 @@ function Home() {
 	const containerRef = useRef(null);
 	const contentRef = useRef(null);
 	const productsPerPage = 20;
+	
+	let keyword = location.search
+	
+	useEffect(() => {
+        dispatch(listProducts(keyword))
+
+    	}, [dispatch, keyword])
+	console.log("product list", productList);
 
 
 	const categories = [
@@ -122,9 +134,6 @@ function Home() {
 	const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
 	const currentProducts = products.slice(startIndex, endIndex);
 
-	console.log(currentProducts);
-	console.log(products);
-	console.log(currentPage);
 
 	return (
 	<div className={styles.home}>
