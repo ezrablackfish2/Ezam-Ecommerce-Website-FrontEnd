@@ -135,6 +135,7 @@ function Home() {
 	const startIndex = (currentPage - 1) * productsPerPage;
 	const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
 	const currentProducts = products.slice(startIndex, endIndex);
+	document.title = "EZam Ecommerce Website";
 
 
 	return (

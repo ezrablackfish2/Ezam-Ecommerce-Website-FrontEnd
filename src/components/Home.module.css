@@ -342,6 +342,12 @@
 		width: 80%;
 		height: auto;
 	}
+	.latestProduct:hover {
+	width: 83%;
+	height: 83%;
+	transition-property: width height;
+	transition-duration: 0.4s;
+}
 }
 
 @media(max-width: 815px) {
