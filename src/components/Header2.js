@@ -1,9 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navbar, Nav, Container, Row, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
+import { Link } from 'react-router-dom';
+
 
 function Header() {
 
@@ -49,13 +51,13 @@ function Header() {
                                 )}
 
 
-                            {userInfo && userInfo.isAdmin && (
+                            { userInfo && userInfo.isAdmin && (
                                 <NavDropdown title='Admin' id='adminmenue'>
                                     <LinkContainer to='/admin/userlist'>
                                         <NavDropdown.Item>Users</NavDropdown.Item>
                                     </LinkContainer>
 
-                                    <LinkContainer to='/admin/productlist'>
+                                    <LinkContainer to="/admin/productlist">
                                         <NavDropdown.Item>Products</NavDropdown.Item>
                                     </LinkContainer>
 
@@ -76,3 +78,4 @@ function Header() {
 }
 
 export default Header
+

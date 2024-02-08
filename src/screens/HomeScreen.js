@@ -12,13 +12,13 @@ import styles from "../components/Home.module.css";
 
 
 function HomeScreen() {
-	const location = useLocation();
+    const location = useLocation();
     const history = useNavigate();
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
     const { error, loading, products, page, pages } = productList
 
-    let keyword = location.search
+    let keyword = location.search;
 
     useEffect(() => {
         dispatch(listProducts(keyword))

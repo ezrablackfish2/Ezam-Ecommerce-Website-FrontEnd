@@ -12,8 +12,8 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 function ProductEditScreen({ match }) {
 
-	const history = useNavigate();
-	const { id } = useParams();
+    const history = useNavigate();
+    const { id } = useParams();
     const productId = id
 
     const [name, setName] = useState('')
