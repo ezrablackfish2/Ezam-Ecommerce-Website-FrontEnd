@@ -1,0 +1,53 @@
+.detailListContainer {
+	margin-top: 50px;
+	left: 5%;
+	position: relative;
+	display: inline-block;
+	width: 45%;
+}
+
+.detailImageContainer {
+	position: relative;
+	display: inline-block;
+	width: 45%;
+}
+
+.detailLists{
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100%;
+}
+
+.detailImage {
+	margin-top: 50px;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.back {
+	position: relative;
+	display: inline-block;
+	font-family: "itim";
+	font-family: "Gugi";
+	font-family: "Croissant One";
+	font-family: "Protest Guerrilla";
+	font-family: "Barlow Condensed";
+	font-weight: -999;
+	text-decoration: none;
+	left: 3%;
+	color: inherit;
+}
+
+.detail {
+	font-family: "Gugi";
+	font-family: "Lilita One";
+	font-family: "Croissant One";
+	font-family: "Protest Guerrilla";
+	font-family: "Barlow Condensed";
+	font-weight: -999;
+	position: relative;
+	background-color: #f5f5f5;
+}

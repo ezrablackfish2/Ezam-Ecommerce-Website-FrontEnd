@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import styles from "../components/Product.module.css";
 
 function ProductScreen({ match, history }) {
 	const { id } = useParams();
@@ -61,8 +62,8 @@ function ProductScreen({ match, history }) {
 	console.log(product.image);
 
     return (
-        <div>
-            <Link to='/' className='btn btn-light my-3'>Go Back</Link>
+        <div className={styles.detail}>
+            <Link to='/' className={styles.back}>Go Back</Link>
             {loading ?
                 <Loader />
                 : error
@@ -70,13 +71,13 @@ function ProductScreen({ match, history }) {
                     : (
                         <div>
                             <Row>
-                                <Col md={6}>
-                                    <Image src={`https://ezam-ecommerce.onrender.com/${product.image}`} alt={product.name} fluid />
-                                </Col>
+                                <div className={styles.detailImageContainer}>
+                                    <Image className={styles.detailImage} src={`https://ezam-ecommerce.onrender.com/${product.image}`} alt={product.name} fluid />
+                                </div>
 
 
-                                <Col md={3}>
-                                    <ListGroup variant="flush">
+                                <div className={styles.detailListContainer}>
+                                    <div className={styles.detailLists} variant="flush">
                                         <ListGroup.Item>
                                             <h3>{product.name}</h3>
                                         </ListGroup.Item>
@@ -92,8 +93,8 @@ function ProductScreen({ match, history }) {
                                         <ListGroup.Item>
                                             Description: {product.description}
                                         </ListGroup.Item>
-                                    </ListGroup>
-                                </Col>
+                                    </div>
+                                </div>
 
 
                                 <Col md={3}>
