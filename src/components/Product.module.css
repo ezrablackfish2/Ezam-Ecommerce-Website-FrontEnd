@@ -1,6 +1,5 @@
 .detailListContainer {
 	margin-top: 50px;
-	left: 5%;
 	position: relative;
 	display: inline-block;
 	width: 45%;
@@ -13,18 +12,21 @@
 }
 
 .detailLists{
+	left: 15%;
 	display: inline-block;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	width: 100%;
+	width: 90%;
+	top: -100px;
 }
 
 .detailImage {
+	left: 5%;
 	margin-top: 50px;
 	position: relative;
 	display: inline-block;
-	width: 100%;
+	width: 95%;
 }
 
 .back {
