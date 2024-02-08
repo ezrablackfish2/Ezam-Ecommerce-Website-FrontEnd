@@ -1,0 +1,12 @@
+.page {
+	position: relative;
+	display: inline-block;
+	width: 2%;
+}
+
+.pagination {
+	display: none;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+}

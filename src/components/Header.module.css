@@ -193,6 +193,9 @@
 	font-size: 12px;
 	cursor: pointer;
 }
+.category:hover {
+	color: #757575;
+}
 
 .categories {
 	position: relative;

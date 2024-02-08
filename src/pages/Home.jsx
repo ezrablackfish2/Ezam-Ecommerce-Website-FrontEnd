@@ -24,6 +24,7 @@ import construction from "../public/construction.png";
 import { listProducts } from '../actions/productActions'
 import { useNavigate, useLocation } from "react-router-dom"
 import Rating from '../components/Rating'
+import Paginate from '../components/Paginate'
 
 
 function Home() {
@@ -39,6 +40,7 @@ function Home() {
 	const containerRef = useRef(null);
 	const contentRef = useRef(null);
 	const productsPerPage = 20;
+	const { error, loading, page, pages } = productList
 	
 	let keyword = location.search
 	
@@ -196,14 +198,16 @@ function Home() {
 		{
 			productList.products.map((product, index) => (
 		<div className={`${styles.latestProduct} ${index % 2 === 0 ? styles.white : styles.black}`} key={product.id}>
-		<a href={`/product/${product._id}`}>
+		<a className={styles.latestProductLink} href={`/product/${product._id}`}>
 		<div className={styles.productName}>{product.name}</div>
 		<div className={styles.productDescription}> {product.description}</div>
 		<div className={styles.prodcutPrice}>From {product.price}  Birr</div>
+		<div className={styles.imageContainer}>
 		<img
 			className={styles.productImage}
 			src={`https://ezam-ecommerce.onrender.com/${product.image}`}
 				/>
+		</div>
 		<div className="my-3">
                         <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
                     </div>
@@ -215,10 +219,11 @@ function Home() {
 		</div>
 		</div>
 		<div className={styles.pagination}>
-		            {currentPage > 1 && (
+			<Paginate page={page} pages={pages} keyword={keyword} />
+		            { currentPage > 1 && (
 				              <button className={styles.prevbutton} onClick={handlePrevPage}>Previous</button>
 				            )}
-		            {currentPage < totalPages && (
+		            { currentPage < totalPages && (
 				              <button className={styles.nextbutton} onClick={handleNextPage}>Next</button>
 				            )}
 		</div>

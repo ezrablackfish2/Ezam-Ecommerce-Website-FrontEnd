@@ -1,6 +1,5 @@
 import React from 'react';
-import { Pagination } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Paginate({ pages, page, keyword = '', isAdmin = false }) {
     if (keyword) {
@@ -9,19 +8,26 @@ function Paginate({ pages, page, keyword = '', isAdmin = false }) {
 
     return (
         pages > 1 && (
-            <Pagination>
+            <div style={{ display: 'flex', justifyContent: 'center' , fontFamily: "itim"}}>
                 {[...Array(pages).keys()].map((x) => (
-                    <LinkContainer
+                    <Link
                         key={x + 1}
                         to={{
                             pathname: !isAdmin ? '/' : '/admin/productlist/',
                             search: `?keyword=${keyword}&page=${x + 1}`
                         }}
+                        style={{
+                            backgroundColor: x + 1 === page ? '#000000' : '#fff',
+                            color: x + 1 === page ? '#fff' : '#000',
+                            padding: '5px 10px',
+                            margin: '0 5px',
+                            textDecoration: 'none'
+                        }}
                     >
-                        <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>
-                    </LinkContainer>
+                        {x + 1}
+                    </Link>
                 ))}
-            </Pagination>
+            </div>
         )
     );
 }
