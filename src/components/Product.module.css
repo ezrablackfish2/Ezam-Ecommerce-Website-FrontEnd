@@ -72,6 +72,7 @@ textarea:focus {
 
 .reviewTitle {
 	font-size: 40px;
+	margin-bottom: 10px;
 }
 
 .bottomDetail {
@@ -264,4 +265,60 @@ select::-ms-expand {
 	font-weight: -999;
 	position: relative;
 	background-color: #f5f5f5;
+}
+
+@media (max-width: 925px) {
+	.detailImageContainer {
+		display: block;
+		left: 0%;
+		margin: 0%;
+		width: 100%;
+	}
+	.detailImage {
+		left: 0%;
+	}
+	.detailListContainer {
+		position: relative;
+		width: 100%;
+	}
+	.detailLists{
+		left: 5%;
+	}
+	
+}
+@media (max-width: 435px) {
+	.detailLists {
+		font-size: 12px;
+	}
+	.ratingSelector {
+		width: 120px;
+	}	
+	textarea {
+		width: 200px;
+	}
+	.productName {
+		font-size: 25px;
+	}
+	.bagButton {
+		font-size: 15px;
+	}
+	.reviewTitle {
+		font-size: 25px;
+	}
+	.writeTitle {
+		font-size: 25px;
+	}
+	.submitButton {
+		font-size: 15px;
+	}
+	.bottomDetail {
+		font-size: 12px;
+	}
+	
+}
+@media (max-width: 261px) {
+	textarea {
+		width: 120px;
+	}
+	
 }

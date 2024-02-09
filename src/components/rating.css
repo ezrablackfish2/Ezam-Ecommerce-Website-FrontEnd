@@ -24,3 +24,9 @@
 .far.fa-star:before {
   content: "\2606"; 
 }
+
+@media (max-width: 435px) {
+	.rating {
+		font-size: 13px;
+	}
+}
