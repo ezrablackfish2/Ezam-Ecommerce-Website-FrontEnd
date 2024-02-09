@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap';
-import styles from "./App.modules.css";
+import  "./App.css";
 import Home from "./pages/Home.jsx";
 import Product from "./pages/Product.jsx";
 import { BrowserRouter as Router, Route, Routes  } from "react-router-dom";
@@ -25,7 +25,7 @@ import Header2 from "./components/Header2";
 
 function App() {
   return (
-    <div className={styles.all}>
+    <div className="all">
 	  
 	  <Header />
 	  <Router>
