@@ -1,4 +1,5 @@
 import React from 'react'
+import './rating.css';
 
 function Rating({ value, text, color }) {
     return (

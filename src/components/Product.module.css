@@ -1,24 +1,236 @@
-.detailListContainer {
+.submitButton {
+	margin-top: 30px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	background-color: #000000;
+	color: #fff;
+	padding: 20px;
+	border-radius: 15px 15px 15px 15px;
+	width: 100px;
+	font-family: 'Dhurjati', sans-serif;
+	font-family: "Barlow Condensed";
+	font-family: "Protest Riot";
+	font-family: 'Rubik Glitch';
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+.submitButton:hover{
+	cursor: pointer;
+	background-color: #353535;
+	background-color: #f8ce0b;
+	
+}
+
+.labels {
+	display: block;
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.ratingSelector {
+	display: block;
+	width: 30%;
+	margin-top: 10px;
+	left: -25px;
+}
+
+textarea {
+	display: block;
+	width: 60%;
+	left: 0px;
+	height: 100px;
+    	padding: 10px;
+    	border: 1px solid #ccc;
+    	border-radius: 5px;
+    	resize: vertical;
+        font-family: 'Roboto Mono', monospace;
+	border: none;
+}
+textarea:focus {
+	outline: none;
+}
+
+.reviewName {
+	margin-right: 5px;
+}
+
+.writeTitle {
+	margin-top: 20px;
+	font-size: 40px;
+}
+
+.hr {
+	position: relative;
+	display: inline-block;
+	width: 40%;
+	opacity: 0.2;
+}
+
+.reviewTitle {
+	font-size: 40px;
+}
+
+.bottomDetail {
 	margin-top: 50px;
 	position: relative;
 	display: inline-block;
+	width: 80%;
+	left: 10%;
+        font-family: 'Roboto Mono', monospace;
+}
+
+.topRating{
+	display: inline-block;
+	position: relative;
+	margin-top: 50px;
+}
+
+.selectQContainer {
+	position: relative;
+	display: inline-block;
+}
+
+select {
+	margin-left: 25px;
+	display: inline-block;
+	position: relative;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+    font-family: 'Roboto Mono', monospace;
+    background-color: #ffffff;
+    font-size: 12px;
+    border: none;
+}
+select:hover {
+	border-color: #000000;
+}
+
+select:focus {
+    outline: none;
+    border-color: #000000;
+}
+
+
+
+option {
+	position: relative;
+	display: inline-block;
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 50%;
+    left: 20%;
+    border: none;
+}
+option:checked;
+option:hover {
+	background-color: black;
+	cursor: pointer;
+}
+
+select::after {
+    content: "\25BC"; 
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; 
+}
+
+select::-ms-expand {
+    display: none; 
+}
+
+
+
+.bagButton {
+	margin-top: 100px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	background-color: #000000;
+	color: #fff;
+	padding: 15px;
+	border-radius: 25px 25px 25px 25px;
+	width: 80%;
+	font-family: 'Dhurjati', sans-serif;
+	font-family: "Barlow Condensed";
+	font-family: "Protest Riot";
+	font-family: 'Rubik Glitch';
+	font-size: 25px;
+}
+.bagButton:hover{
+	cursor: pointer;
+	background-color: #353535;
+	background-color: #f8ce0b;
+	
+}
+
+.quantity {
+	margin-top: 15px;
+	position: relative;
+	display: inline-block;
+	width: 10%;
+	font-weight: 999;
+	margin-right: 20px;
+}
+
+.stock {
+	position: relative;
+	display: inline-block;
+	margin-top: 15px;
+	width: 30%;
+	font-weight: 999;
+}
+
+.productPrice {
+	display: inline-block;
+	position: relative;
+	width: 80%;
+	margin-top: 15px;
+	font-weight: 999;
+}
+
+.productName {
+	display: inline-block;
+	position: relative;
+	font-size: 40px;
+	font-family: "Protest Guerrilla";
+}
+
+.detailListContainer {
+	margin-top: 50px;
+	position: absolute;
+	display: inline-block;
 	width: 45%;
+	top: 0px;
 }
 
 .detailImageContainer {
 	position: relative;
 	display: inline-block;
 	width: 45%;
+	left: 0%;
 }
 
 .detailLists{
+	margin-top: 50px;
 	left: 15%;
 	display: inline-block;
 	justify-content: center;
 	align-items: center;
 	position: relative;
 	width: 90%;
-	top: -100px;
+	font-family: "Barlow Condensed";
+	font-family: 'Roboto Mono', monospace;
 }
 
 .detailImage {
@@ -36,11 +248,11 @@
 	font-family: "Gugi";
 	font-family: "Croissant One";
 	font-family: "Protest Guerrilla";
-	font-family: "Barlow Condensed";
 	font-weight: -999;
 	text-decoration: none;
 	left: 3%;
 	color: inherit;
+	font-family: "Barlow Condensed";
 }
 
 .detail {

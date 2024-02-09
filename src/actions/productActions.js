@@ -230,6 +230,7 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
         const {
             userLogin: { userInfo },
         } = getState()
+	
 
         const config = {
             headers: {
@@ -247,6 +248,7 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
             type: PRODUCT_CREATE_REVIEW_SUCCESS,
             payload: data,
         })
+	    console.log("successfully reviewd");
 
 
 
