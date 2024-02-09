@@ -1,3 +1,14 @@
+.order {
+	position: relative;
+	display: inline-block;
+	margin-bottom: 50px;
+	font-size: 30px;
+}
+
+li {
+	list-style: none;;
+}
+
 .cartImageImage {
 	position: relative;
 	display: inline-block;

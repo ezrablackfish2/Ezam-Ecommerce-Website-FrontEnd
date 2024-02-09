@@ -29,6 +29,10 @@ function ShippingScreen() {
     }
 
     return (
+	    <>
+	    <div>
+	    <CheckoutSteps step1 step2 />
+	    </div>
         <div className={styles.totalForm}>
             <div>
                 <div className={styles.formTitle}>Shipping</div>
@@ -79,6 +83,7 @@ function ShippingScreen() {
                 </form>
             </div>
         </div>
+	    </>
     );}
 
 export default ShippingScreen

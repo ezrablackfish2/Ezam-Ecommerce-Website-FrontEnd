@@ -6,6 +6,8 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { register } from '../actions/userActions'
+import styles from "../components/Form.module.css";
+
 
 function RegisterScreen() {
     const location = useLocation();
@@ -41,77 +43,59 @@ function RegisterScreen() {
     }
 
     return (
-        <FormContainer>
-            <h1>Sign In</h1>
-            {message && <Message variant='danger'>{message}</Message>}
-            {error && <Message variant='danger'>{error}</Message>}
-            {loading && <Loader />}
-            <Form onSubmit={submitHandler}>
+        <div className={styles.totalForm}>
+            <h1 className={styles.formTitle}>Sign Up</h1>
+            {message && <div className="error-message">{message}</div>}
+            {error && <div className="error-message">{error}</div>}
+            {loading && <div className="loader">Loading...</div>}
 
-                <Form.Group controlId='name'>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control
-                        required
-                        type='name'
-                        placeholder='Enter name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    >
-                    </Form.Control>
-                </Form.Group>
+            <form onSubmit={submitHandler}>
+                <label className={styles.label}  htmlFor="name">Name</label>
+                <input
+		    className={styles.input}	
+                    type="text"
+                    id="name"
+                    placeholder="Enter name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
 
-                <Form.Group controlId='email'>
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control
-                        required
-                        type='email'
-                        placeholder='Enter Email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    >
-                    </Form.Control>
-                </Form.Group>
+                <label className={styles.label}  htmlFor="email">Email Address</label>
+                <input
+	            className={styles.input}
+                    type="email"
+                    id="email"
+                    placeholder="Enter Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
 
-                <Form.Group controlId='password'>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        required
-                        type='password'
-                        placeholder='Enter Password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    >
-                    </Form.Control>
-                </Form.Group>
+                <label className={styles.label}  htmlFor="password">Password</label>
+                <input
+	            className={styles.input}
+                    type="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
 
-                <Form.Group controlId='passwordConfirm'>
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control
-                        required
-                        type='password'
-                        placeholder='Confirm Password'
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    >
-                    </Form.Control>
-                </Form.Group>
+                <label className={styles.label}  htmlFor="passwordConfirm">Confirm Password</label>
+                <input
+	            className={styles.input}
+                    type="password"
+                    id="passwordConfirm"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    required
+                />
 
-                <Button type='submit' variant='primary'>
-                    Register
-                </Button>
-
-            </Form>
-
-            <Row className='py-3'>
-                <Col>
-                    Have an Account? <Link
-                        to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-                        Sign In
-                        </Link>
-                </Col>
-            </Row>
-        </FormContainer >
-    )
-}
+                <button className={styles.Button}  type="submit">Sign Up</button>
+            </form>
+        </div>
+    );}
 
 export default RegisterScreen

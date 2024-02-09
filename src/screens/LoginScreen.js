@@ -6,6 +6,8 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
+import styles from "../components/Form.module.css";
+
 
 function LoginScreen( ) {
     const location = useLocation();
@@ -32,51 +34,39 @@ function LoginScreen( ) {
     }
 
     return (
-        <FormContainer>
-            <h1>Sign In</h1>
-            {error && <Message variant='danger'>{error}</Message>}
-            {loading && <Loader />}
-            <Form onSubmit={submitHandler}>
+        <div className={styles.totalForm}>
+            <h1 className={styles.formTitle}>Sign In</h1>
+            {error && <div className="error-message">{error}</div>}
+            {loading && <div className="loader">Loading...</div>}
 
-                <Form.Group controlId='email'>
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control
-                        type='email'
-                        placeholder='Enter Email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    >
-                    </Form.Control>
-                </Form.Group>
+            <form onSubmit={submitHandler}>
+                <label className={styles.label} htmlFor="email">Email Address</label>
+                <input
+	    	    className={styles.input}
+                    type="email"
+                    id="email"
+                    placeholder="Enter Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
+                <label className={styles.label} htmlFor="password">Password</label>
+                <input
+	    	    className={styles.input}
+                    type="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
-                <Form.Group controlId='password'>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type='password'
-                        placeholder='Enter Password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    >
-                    </Form.Control>
-                </Form.Group>
+                <button className={styles.Button} type="submit">Sign In</button>
+            </form>
 
-                <Button type='submit' variant='primary'>
-                    Sign In
-                </Button>
-            </Form>
-
-            <Row className='py-3'>
-                <Col>
-                    New Customer? <Link
-                        to={redirect ? `/register?redirect=${redirect}` : '/register'}>
-                        Register
-                        </Link>
-                </Col>
-            </Row>
-
-        </FormContainer>
-    )
-}
+            <div className="py-3">
+                <p>New Customer? <a className={styles.link} href={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</a></p>
+            </div>
+        </div>
+    );}
 
 export default LoginScreen

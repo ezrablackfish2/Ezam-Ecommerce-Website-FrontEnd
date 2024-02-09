@@ -1,3 +1,14 @@
+.link {
+	text-decoration: none;
+	color: #757575;
+}
+
+.inputRadio {
+	position: relative;
+	display: inline-block;
+	left: 5%;
+}
+
 .buttonContainer {
 	display: flex;
 	align-items: center;

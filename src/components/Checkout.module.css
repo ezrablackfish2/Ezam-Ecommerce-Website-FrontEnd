@@ -1,0 +1,21 @@
+.link {
+	text-decoration: none;
+	color: inherit;
+	color: #000000;
+}
+
+.steps {
+	position: relative;
+	display: inline-block;
+	width: 90%;
+	left: 5%;
+	font-family: "itim";
+	margin-top: 30px;
+	font-family: 'Diphylleia', serif;
+	color: #959595;
+}
+.step {
+	position: relative;
+	display: inline-block;
+	margin-left: 15px;
+}

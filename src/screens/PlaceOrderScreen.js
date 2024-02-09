@@ -6,6 +6,8 @@ import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
+import styles from "../components/Cart.module.css";
+
 
 function PlaceOrderScreen() {
 
@@ -48,121 +50,107 @@ function PlaceOrderScreen() {
         }))
     }
 
-    return (
-        <div>
-            <CheckoutSteps step1 step2 step3 step4 />
-            <Row>
-                <Col md={8}>
-                    <ListGroup variant='flush'>
-                        <ListGroup.Item>
-                            <h2>Shipping</h2>
-
-                            <p>
-                                <strong>Shipping: </strong>
-                                {cart.shippingAddress.address},  {cart.shippingAddress.city}
-                                {'  '}
-                                {cart.shippingAddress.postalCode},
-                                {'  '}
-                                {cart.shippingAddress.country}
-                            </p>
-                        </ListGroup.Item>
-
-                        <ListGroup.Item>
-                            <h2>Payment Method</h2>
-                            <p>
-                                <strong>Method: </strong>
-                                {cart.paymentMethod}
-                            </p>
-                        </ListGroup.Item>
-
-                        <ListGroup.Item>
-                            <h2>Order Items</h2>
-                            {cart.cartItems.length === 0 ? <Message variant='info'>
-                                Your cart is empty
-                            </Message> : (
-                                    <ListGroup variant='flush'>
-                                        {cart.cartItems.map((item, index) => (
-                                            <ListGroup.Item key={index}>
-                                                <Row>
-                                                    <Col md={1}>
-                                                        <Image src={item.image} alt={item.name} fluid rounded />
-                                                    </Col>
-
-                                                    <Col>
-                                                        <Link to={`/product/${item.product}`}>{item.name}</Link>
-                                                    </Col>
-
-                                                    <Col md={4}>
-                                                        {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
-                                                    </Col>
-                                                </Row>
-                                            </ListGroup.Item>
-                                        ))}
-                                    </ListGroup>
-                                )}
-                        </ListGroup.Item>
-
-                    </ListGroup>
-
-                </Col>
-
-                <Col md={4}>
-                    <Card>
-                        <ListGroup variant='flush'>
-                            <ListGroup.Item>
-                                <h2>Order Summary</h2>
-                            </ListGroup.Item>
-
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Items:</Col>
-                                    <Col>${cart.itemsPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Shipping:</Col>
-                                    <Col>${cart.shippingPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Tax:</Col>
-                                    <Col>${cart.taxPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Total:</Col>
-                                    <Col>${cart.totalPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-
-
-                            <ListGroup.Item>
-                                {error && <Message variant='danger'>{error}</Message>}
-                            </ListGroup.Item>
-
-                            <ListGroup.Item>
-                                <Button
-                                    type='button'
-                                    className='btn-block'
-                                    disabled={cart.cartItems === 0}
-                                    onClick={placeOrder}
-                                >
-                                    Place Order
-                                </Button>
-                            </ListGroup.Item>
-
-                        </ListGroup>
-                    </Card>
-                </Col>
-            </Row>
+    
+return (
+	<>
+	<div className="checkout-steps">
+      <CheckoutSteps step1 step2 step3 step4 />
+    </div>
+  <div className={styles.cart}>
+    
+    <div className={styles.cartObjects}>
+        <ul className="list-group">
+          <li className="list-group-item">
+            <h2>Shipping</h2>
+            <p>
+              <strong>Shipping: </strong>
+              {cart.shippingAddress.address}, {cart.shippingAddress.city}{' '}
+              {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
+            </p>
+          </li>
+          <li className="list-group-item">
+            <h2>Payment Method</h2>
+            <p>
+              <strong>Method: </strong>
+              {cart.paymentMethod}
+            </p>
+          </li>
+          <li className="list-group-item">
+            <h2>Order Items</h2>
+            {cart.cartItems.length === 0 ? (
+              <p>Your cart is empty</p>
+            ) : (
+              <ul className="list-group">
+                {cart.cartItems.map((item, index) => (
+                  <li className={styles.cartItems} key={index}>
+                    <div className={styles.cartItem}>
+                      <div className={styles.cartImage}>
+                        <img src={`https://ezam-ecommerce.onrender.com/${item.image}`} alt={item.name} className={styles.cartImageImage} />
+                      </div>
+                      <div className={styles.cartPrice}>
+                        <a className={styles.backLink} href={`/product/${item.product}`}>{item.name}</a>
+                      </div>
+                      <div className={styles.cartSelect}>
+                        {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        </ul>
+      </div>
+      <div className={styles.subTotals}>
+        <div className="card">
+          <ul className="list-group">
+            <li className="list-group-item">
+              <div className={styles.order}>Order Summary</div>
+            </li>
+            <li className="list-group-item">
+              <div className="row">
+                <div className={styles.cartName}>Items:</div>
+                <div className={styles.cartName}>${cart.itemsPrice}</div>
+              </div>
+            </li>
+            <li className="list-group-item">
+              <div className="row">
+                <div className={styles.cartName}>Shipping:</div>
+                <div className={styles.cartName}>${cart.shippingPrice}</div>
+              </div>
+            </li>
+            <li className="list-group-item">
+              <div className="row">
+                <div className={styles.cartName}>Tax:</div>
+                <div className={styles.cartName}>${cart.taxPrice}</div>
+              </div>
+            </li>
+            <li className="list-group-item">
+              <div className="row">
+                <div className={styles.cartName}>Total:</div>
+                <div className={styles.cartName}>${cart.totalPrice}</div>
+              </div>
+            </li>
+            <li className="list-group-item">
+              {error && <p className="text-danger">{error}</p>}
+            </li>
+            <li className="list-group-item">
+              <button
+		className={styles.proceedButton}
+                type="button"
+                disabled={cart.cartItems.length === 0}
+                onClick={placeOrder}
+              >
+                Place Order
+              </button>
+            </li>
+          </ul>
         </div>
-    )
+      </div>
+  </div>
+	</>
+);
+
 }
 
 export default PlaceOrderScreen

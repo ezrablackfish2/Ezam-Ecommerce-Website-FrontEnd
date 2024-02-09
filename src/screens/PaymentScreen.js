@@ -5,6 +5,7 @@ import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { savePaymentMethod } from '../actions/cartActions'
 import { useNavigate } from "react-router-dom";
+import styles from "../components/Form.module.css";
 
 
 function PaymentScreen() {
@@ -29,32 +30,40 @@ function PaymentScreen() {
     }
 
     return (
-        <FormContainer>
-            <CheckoutSteps step1 step2 step3 />
+	    <>
+	    <div>
+	    <CheckoutSteps step1 step2 step3 />
+	    </div>
+        <div className={styles.totalForm}>
+	    <div className={styles.formTitle}>
+	    Payment Method
+	    </div>
 
-            <Form onSubmit={submitHandler}>
-                <Form.Group>
-                    <Form.Label as='legend'>Select Method</Form.Label>
-                    <Col>
-                        <Form.Check
+            <form onSubmit={submitHandler}>
+                <div className="form-group">
+                    <label className={styles.label}>Select Method</label>
+                    <div
+	    		className={styles.inputRadio}
+	    		>
+                        <input
                             type='radio'
-                            label='PayPal or Credit Card'
                             id='paypal'
                             name='paymentMethod'
-                            checked
+                            value='PayPal or Credit Card'
+                            checked={paymentMethod === 'PayPal or Credit Card'}
                             onChange={(e) => setPaymentMethod(e.target.value)}
-                        >
+                        />
+                        <label htmlFor='paypal'>PayPal or Credit Card</label>
+                    </div>
+                </div>
 
-                        </Form.Check>
-                    </Col>
-                </Form.Group>
-
-                <Button type='submit' variant='primary'>
+                <button type='submit' className={styles.Button}>
                     Continue
-                </Button>
-            </Form>
-        </FormContainer>
-    )
+                </button>
+            </form>
+        </div>
+	    </>
+    );
 }
 
 export default PaymentScreen

@@ -1,51 +1,53 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from "react-router-dom";
+import styles from "./Checkout.module.css";
 
 function CheckoutSteps({ step1, step2, step3, step4 }) {
 
     return (
-        <Nav className='justify-content-center mb-4'>
-            <Nav.Item>
+        <div className={styles.steps}>
+            <div className={styles.step}>
                 {step1 ? (
-                    <LinkContainer to='/login'>
-                        <Nav.Link>Login</Nav.Link>
-                    </LinkContainer>
+                    <Link className={styles.link} to='/login'>
+                        <div>Login</div>
+                    </Link>
                 ) : (
-                        <Nav.Link disabled>Login</Nav.Link>
+                        <div disabled>Login</div>
                     )}
-            </Nav.Item>
+            </div>
 
-            <Nav.Item>
+            <div className={styles.step}>
                 {step2 ? (
-                    <LinkContainer to='/shipping'>
-                        <Nav.Link>Shipping</Nav.Link>
-                    </LinkContainer>
+                    <Link className={styles.link} to='/shipping'>
+                        <div>Shipping</div>
+                    </Link>
                 ) : (
-                        <Nav.Link disabled>Shipping</Nav.Link>
+                        <div disabled>Shipping</div>
                     )}
-            </Nav.Item>
+            </div>
 
-            <Nav.Item>
+            <div className={styles.step}>
                 {step3 ? (
-                    <LinkContainer to='/payment'>
-                        <Nav.Link>Payment</Nav.Link>
-                    </LinkContainer>
+                    <Link className={styles.link} to='/payment'>
+                        <div>Payment</div>
+                    </Link>
                 ) : (
-                        <Nav.Link disabled>Payment</Nav.Link>
+                        <div disabled>Payment</div>
                     )}
-            </Nav.Item>
+            </div>
 
-            <Nav.Item>
+            <div className={styles.step}>
                 {step4 ? (
-                    <LinkContainer to='/placeorder'>
-                        <Nav.Link>Place Order</Nav.Link>
-                    </LinkContainer>
+                    <Link className={styles.link} to='/placeorder'>
+                        <div>Place Order</div>
+                    </Link>
                 ) : (
-                        <Nav.Link disabled>Place Order</Nav.Link>
+                        <div disabled>Place Order</div>
                     )}
-            </Nav.Item>
-        </Nav>
+            </div>
+        </div>
     )
 }
 
