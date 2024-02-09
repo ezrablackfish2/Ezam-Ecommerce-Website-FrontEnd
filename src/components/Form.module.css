@@ -1,0 +1,71 @@
+.buttonContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Button {
+	margin-top: 30px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	background-color: #000000;
+	color: #fff;
+	padding: 20px;
+	border-radius: 15px 15px 15px 15px;
+	width: 130px;
+	font-family: 'Rubik Glitch';
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+.Button:hover{
+	cursor: pointer;
+	background-color: #f8ce0b;
+	background-color: #353535;
+	
+}
+
+.input {
+	margin-top: 10px;
+	position: relative;
+	display: inline-block;
+	left: 5%;
+	width: 80%;
+	border: none;
+	font-family: 'Bokor';
+	padding: 10px;
+	letter-spacing: 1px;
+}
+.input:hover {
+	outline: none;
+	 
+}
+
+.label {
+	margin-top: 10px;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+
+.formTitle {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+}
+
+.totalForm {
+	display: inline-block;
+	position: relative;
+	left: 20%;
+	width: 60%;
+	padding: 10px;
+	font-family: 'Bokor';
+	font-size: 18px;
+	letter-spacing: 1.5px;
+}
