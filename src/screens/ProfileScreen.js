@@ -156,7 +156,7 @@ function ProfileScreen() {
                                 <tr key={order._id}>
                                     <td className={style.cell}>{order._id}</td>
                                     <td className={style.cell}>{order.createdAt.substring(0, 10)}</td>
-                                    <td className={style.cell}>${order.totalPrice}</td>
+                                    <td className={style.cell}>{order.totalPrice} Birr</td>
                                     <td className={style.cell}>{order.isPaid ? order.paidAt.substring(0, 10) : (
                                         <FontAwesomeIcon icon={faXmark} color="red" />
                                     )}</td>
