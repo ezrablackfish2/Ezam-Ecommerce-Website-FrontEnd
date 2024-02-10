@@ -140,7 +140,7 @@ return loading ? (
                                             </div>
 
                                             <div className={styles.cartSelect}>
-                                                {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
+                                                {item.qty} X {item.price}Birr = {(item.qty * item.price).toFixed(2)} Birr
                                             </div>
                                         </div>
                                     </li>
@@ -163,28 +163,28 @@ return loading ? (
                         <li className="list-group-item">
                             <div className="row">
                                 <div className={styles.cartName}>Items:</div>
-                                <div className={styles.cartName}>${order.itemsPrice}</div>
+                                <div className={styles.cartName}>{order.itemsPrice} Birr</div>
                             </div>
                         </li>
 
                         <li className="list-group-item">
                             <div className="row">
                                 <div className={styles.cartName}>Shipping:</div>
-                                <div className={styles.cartName}>${order.shippingPrice}</div>
+                                <div className={styles.cartName}>{order.shippingPrice} Birr</div>
                             </div>
                         </li>
 
                         <li className="list-group-item">
                             <div className="row">
                                 <div className={styles.cartName}>Tax:</div>
-                                <div className={styles.cartName}>${order.taxPrice}</div>
+                                <div className={styles.cartName}>{order.taxPrice} Birr</div>
                             </div>
                         </li>
 
                         <li className="list-group-item">
                             <div className="row">
                                 <div className={styles.cartName}>Total:</div>
-                                <div className={styles.cartName}>${order.totalPrice}</div>
+                                <div className={styles.cartName}>{order.totalPrice} Birr</div>
                             </div>
                         </li>
 

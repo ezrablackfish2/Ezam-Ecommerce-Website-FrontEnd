@@ -62,7 +62,7 @@ function CartScreen({ match }) {
                                     <Link className={styles.cartName} to={`/product/${item.product}`}>{item.name}</Link>
                                 </div>
                                 <div className={styles.cartPrice}>
-                                    ${item.price}
+                                    {item.price} Birr
                                 </div>
                                 <div className={styles.cartSelect}>
                                     <Form.Control
@@ -99,7 +99,7 @@ function CartScreen({ match }) {
             <div className={styles.subTotals}>
                 <div>
                     <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
-                    ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+                    {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)} Birr
                 </div>
                 <div>
                     <button

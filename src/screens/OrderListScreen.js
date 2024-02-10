@@ -60,7 +60,7 @@ function OrderListScreen() {
                                         <td className={styles.cell}>{order._id}</td>
                                         <td className={styles.cell}>{order.user && order.user.name}</td>
                                         <td className={styles.cell}>{order.createdAt.substring(0, 10)}</td>
-                                        <td className={styles.cell}>${order.totalPrice}</td>
+                                        <td className={styles.cell}>{order.totalPrice} Birr</td>
 
                                         <td className={styles.cell}>{order.isPaid ? (
                                             order.paidAt.substring(0, 10)

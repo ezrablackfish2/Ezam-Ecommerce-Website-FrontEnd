@@ -91,7 +91,7 @@ return (
                         <a className={styles.backLink} href={`/product/${item.product}`}>{item.name}</a>
                       </div>
                       <div className={styles.cartSelect}>
-                        {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
+                        {item.qty} X {item.price}Birr = {(item.qty * item.price).toFixed(2)} Birr
                       </div>
                     </div>
                   </li>
@@ -110,25 +110,25 @@ return (
             <li className="list-group-item">
               <div className="row">
                 <div className={styles.cartName}>Items:</div>
-                <div className={styles.cartName}>${cart.itemsPrice}</div>
+                <div className={styles.cartName}>{cart.itemsPrice} Birr</div>
               </div>
             </li>
             <li className="list-group-item">
               <div className="row">
                 <div className={styles.cartName}>Shipping:</div>
-                <div className={styles.cartName}>${cart.shippingPrice}</div>
+                <div className={styles.cartName}>{cart.shippingPrice} Birr</div>
               </div>
             </li>
             <li className="list-group-item">
               <div className="row">
                 <div className={styles.cartName}>Tax:</div>
-                <div className={styles.cartName}>${cart.taxPrice}</div>
+                <div className={styles.cartName}>{cart.taxPrice} Birr</div>
               </div>
             </li>
             <li className="list-group-item">
               <div className="row">
                 <div className={styles.cartName}>Total:</div>
-                <div className={styles.cartName}>${cart.totalPrice}</div>
+                <div className={styles.cartName}>{cart.totalPrice} Birr</div>
               </div>
             </li>
             <li className="list-group-item">

@@ -99,7 +99,7 @@ function ProductListScreen({ match }) {
                                         <tr key={product._id}>
                                             <td className={styles.cell}>{product._id}</td>
                                             <td className={styles.cell}>{product.name}</td>
-                                            <td className={styles.cell}>${product.price}</td>
+                                            <td className={styles.cell}>{product.price} Birr</td>
                                             <td className={styles.cell}>{product.category}</td>
                                             <td className={styles.cell}>{product.brand}</td>
 
