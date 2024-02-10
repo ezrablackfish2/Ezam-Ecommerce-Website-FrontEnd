@@ -8,6 +8,11 @@ import Message from '../components/Message'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 import { listMyOrders } from '../actions/orderActions'
+import styles from "../components/Form.module.css";
+import style from "../components/List.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPenToSquare, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+
 
 function ProfileScreen() {
 	const history = useNavigate();
@@ -65,110 +70,106 @@ function ProfileScreen() {
 
     }
     return (
-        <Row>
-            <Col md={3}>
-                <h2>User Profile</h2>
+        <div class="row">
+    <div  className={styles.totalForm}>
+        <h2 className={styles.formTitle}>User Profile</h2>
 
-                {message && <Message variant='danger'>{message}</Message>}
-                {error && <Message variant='danger'>{error}</Message>}
-                {loading && <Loader />}
-                <Form onSubmit={submitHandler}>
+        {message && <Message variant='danger'>{message}</Message>}
+        {error && <Message variant='danger'>{error}</Message>}
+        {loading && <Loader />}
+        <form onSubmit={submitHandler}>
 
-                    <Form.Group controlId='name'>
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control
-                            required
-                            type='name'
-                            placeholder='Enter name'
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        >
-                        </Form.Control>
-                    </Form.Group>
+            <div class="form-group" controlId='name'>
+                <label className={styles.label} for='name'>Name</label>
+                <input
+		    className={styles.input}
+                    required
+                    type='name'
+                    placeholder='Enter name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </div>
 
-                    <Form.Group controlId='email'>
-                        <Form.Label>Email Address</Form.Label>
-                        <Form.Control
-                            required
-                            type='email'
-                            placeholder='Enter Email'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        >
-                        </Form.Control>
-                    </Form.Group>
+            <div class="form-group" controlId='email'>
+                <label className={styles.label} for='email'>Email Address</label>
+                <input
+	            className={styles.input}
+                    required
+                    type='email'
+                    placeholder='Enter Email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
 
-                    <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
+            <div class="form-group" controlId='password'>
+                <label className={styles.label} for='password'>Password</label>
+                <input
+		    className={styles.input}
+                    type='password'
+                    placeholder='Enter Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
 
-                            type='password'
-                            placeholder='Enter Password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        >
-                        </Form.Control>
-                    </Form.Group>
+            <div class="form-group" controlId='passwordConfirm'>
+                <label className={styles.label} for='passwordConfirm'>Confirm Password</label>
+                <input
+	            className={styles.input}
+                    type='password'
+                    placeholder='Confirm Password'
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+            </div>
 
-                    <Form.Group controlId='passwordConfirm'>
-                        <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control
+            <button className={styles.Button} type='submit' class="btn btn-primary">
+                Update
+            </button>
 
-                            type='password'
-                            placeholder='Confirm Password'
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                        >
-                        </Form.Control>
-                    </Form.Group>
+        </form>
+    </div>
 
-                    <Button type='submit' variant='primary'>
-                        Update
-                </Button>
+    <div className={style.lister}>
+        <h2 className={style.tableTitle}>My Orders</h2>
+        {loadingOrders ? (
+            <div class="loader"></div>
+        ) : errorOrders ? (
+            <div class="message error">{errorOrders}</div>
+        ) : (
+                    <table className={style.table} table-striped table-responsive>
+                        <thead>
+                            <tr>
+                                <th className={style.cell}>ID</th>
+                                <th className={style.cell}>Date</th>
+                                <th className={style.cell}>Total</th>
+                                <th className={style.cell}>Paid</th>
+                                <th className={style.cell}>Delivered</th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-                </Form>
-            </Col>
-
-            <Col md={9}>
-                <h2>My Orders</h2>
-                {loadingOrders ? (
-                    <Loader />
-                ) : errorOrders ? (
-                    <Message variant='danger'>{errorOrders}</Message>
-                ) : (
-                            <Table striped responsive className='table-sm'>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Date</th>
-                                        <th>Total</th>
-                                        <th>Paid</th>
-                                        <th>Delivered</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    {orders.map(order => (
-                                        <tr key={order._id}>
-                                            <td>{order._id}</td>
-                                            <td>{order.createdAt.substring(0, 10)}</td>
-                                            <td>${order.totalPrice}</td>
-                                            <td>{order.isPaid ? order.paidAt.substring(0, 10) : (
-                                                <i className='fas fa-times' style={{ color: 'red' }}></i>
-                                            )}</td>
-                                            <td>
-                                                <LinkContainer to={`/order/${order._id}`}>
-                                                    <Button className='btn-sm'>Details</Button>
-                                                </LinkContainer>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table>
-                        )}
-            </Col>
-        </Row>
+                        <tbody>
+                            {orders.map(order => (
+                                <tr key={order._id}>
+                                    <td className={style.cell}>{order._id}</td>
+                                    <td className={style.cell}>{order.createdAt.substring(0, 10)}</td>
+                                    <td className={style.cell}>${order.totalPrice}</td>
+                                    <td className={style.cell}>{order.isPaid ? order.paidAt.substring(0, 10) : (
+                                        <FontAwesomeIcon icon={faXmark} color="red" />
+                                    )}</td>
+                                    <td className={style.cell}>
+                                        <a className={styles.link} href={`/order/${order._id}`} class='btn btn-sm'>Details</a>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+    </div>
+</div>
     )
 }
 
