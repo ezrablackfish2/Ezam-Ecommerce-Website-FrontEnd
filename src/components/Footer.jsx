@@ -16,7 +16,20 @@ const Footer = () => {
       ['EZam JOURNAL', 'Order Status', 'News'],
       ['Site Feedback', 'Order Cancellation', 'Sustainability']
     ];
-	const socials = [twitter, facebook, youtube, instagram]
+	const socials = [
+		{ image: twitter,
+		   link : "https://twitter.com/ezrablackfish"
+		},
+
+		{ image : facebook,
+		  link : "https://www.facebook.com/profile.php?id=61556500766435",
+		},
+		{ image : youtube,
+		   link: "https://www.youtube.com/channel/UCXpdb_-yQph5_A06MUTfqWw",
+		},
+		{ image : instagram,
+		  link: "https://www.instagram.com/ezrablackfish",
+		}]
 
 	const dispatch = useDispatch();
 	const resourceOn = useSelector((state) => state.footers.resourceOn);
@@ -71,10 +84,12 @@ const Footer = () => {
 		<div className={styles.social}>
 		{
 			socials.map((social) => (
+				<a href={social.link}>
 				<img 
-					src={social} 
+					src={social.image} 
 					className={styles.socialImage}
 				/>
+				</a>
 			))
 		}
 		</div>

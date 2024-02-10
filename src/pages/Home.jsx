@@ -162,7 +162,7 @@ function Home() {
 
 		<div className={styles.upperSpecialistText}>Need shopping help?</div>
 		<div className={styles.lowerSpecialistText}>
-		<a className={styles.specialistLink} href="#">
+		<a className={styles.specialistLink} href="mailto:ezrayeneneh1992@gmail.com">
 			Ask Owners
 		</a>
 		</div>
