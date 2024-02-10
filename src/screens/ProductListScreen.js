@@ -8,6 +8,10 @@ import Paginate from '../components/Paginate'
 import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 import { useNavigate, useLocation } from "react-router-dom";
+import styles from "../components/List.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPenToSquare, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+
 
 function ProductListScreen({ match }) {
 
@@ -57,18 +61,13 @@ function ProductListScreen({ match }) {
     }
 
     return (
-        <div>
-            <Row className='align-items-center'>
-                <Col>
-                    <h1>Products</h1>
-                </Col>
-
-                <Col className='text-right'>
-                    <Button className='my-3' onClick={createProductHandler}>
+        <div className={styles.lister}>
+                    <h1 className={styles.tableTitle}>Products</h1>
+		    <div className={styles.createContainer}>
+                    <Button className={styles.Button} onClick={createProductHandler}>
                         <i className='fas fa-plus'></i> Create Product
                     </Button>
-                </Col>
-            </Row>
+	    	    </div>
 
             {loadingDelete && <Loader />}
             {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
@@ -83,14 +82,14 @@ function ProductListScreen({ match }) {
                     ? (<Message variant='danger'>{error}</Message>)
                     : (
                         <div>
-                            <Table striped bordered hover responsive className='table-sm'>
+                            <Table className={styles.table}striped bordered hover responsive className='table-sm'>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>NAME</th>
-                                        <th>PRICE</th>
-                                        <th>CATEGORY</th>
-                                        <th>BRAND</th>
+                                        <th className={styles.cell}>ID</th>
+                                        <th className={styles.cell}>NAME</th>
+                                        <th className={styles.cell}>PRICE</th>
+                                        <th className={styles.cell}>CATEGORY</th>
+                                        <th className={styles.cell}>BRAND</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -98,22 +97,22 @@ function ProductListScreen({ match }) {
                                 <tbody>
                                     {products.map(product => (
                                         <tr key={product._id}>
-                                            <td>{product._id}</td>
-                                            <td>{product.name}</td>
-                                            <td>${product.price}</td>
-                                            <td>{product.category}</td>
-                                            <td>{product.brand}</td>
+                                            <td className={styles.cell}>{product._id}</td>
+                                            <td className={styles.cell}>{product.name}</td>
+                                            <td className={styles.cell}>${product.price}</td>
+                                            <td className={styles.cell}>{product.category}</td>
+                                            <td className={styles.cell}>{product.brand}</td>
 
-                                            <td>
+                                            <td className={styles.cell}>
                                                 <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                                                    <Button variant='light' className='btn-sm'>
-                                                        <i className='fas fa-edit'></i>
-                                                    </Button>
+                                                    <button variant='light' className={styles.editButton}>
+                                                        <FontAwesomeIcon icon={faPenToSquare} />
+                                                    </button>
                                                 </LinkContainer>
 
-                                                <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(product._id)}>
-                                                    <i className='fas fa-trash'></i>
-                                                </Button>
+                                                <button variant='danger' className={styles.removeButton} onClick={() => deleteHandler(product._id)}>
+                                                    <FontAwesomeIcon className={styles.icon} icon={faTrash} />
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}

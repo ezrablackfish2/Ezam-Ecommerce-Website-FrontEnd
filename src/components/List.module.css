@@ -1,0 +1,89 @@
+.createContainer {
+	position: relative;
+	display: inline-block;
+	width: 30%;
+}
+
+.buttonContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Button {
+	margin-top: 30px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	background-color: #000000;
+	color: #fff;
+	padding: 20px;
+	border-radius: 15px 15px 15px 15px;
+	width: 130px;
+	font-family: 'Rubik Glitch';
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+.Button:hover{
+	cursor: pointer;
+	background-color: #f8ce0b;
+	background-color: #353535;
+	
+}
+
+.editButton {
+	display: inline-block;
+	position: relative;
+	border: none;
+}
+
+.editButton:hover {
+	cursor: pointer;
+}
+
+.icon {
+	color: #ff0000;
+}
+
+.removeButton {
+	border: none;
+}
+
+.removeButton:hover {
+	cursor: pointer;
+}
+
+
+.tableTitle {
+	font-size: 40px;
+	width: 60%;
+	display: inline-block;
+	position: relative;
+}
+
+.table {
+	width: 90%;
+	display: inline-block;
+	position: relative;
+	border-collapse: collapse;
+}
+
+.cell {
+	padding: 15px;
+	text-align: left;
+}
+
+.lister {
+	display: inline-block;
+	position: relative;
+	margin: 5%;
+	width: 90%;
+	font-family: 'Roboto Mono', monospace;
+	font-family: 'Macondo', cursive;
+	font-family: 'Comic Neue', cursive;
+	background-color: #f5f5f5;
+	font-weight: 999;
+	overflow-x: auto;
+}
