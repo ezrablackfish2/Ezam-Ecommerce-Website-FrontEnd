@@ -8,6 +8,7 @@ import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import styles from "../components/Form.module.css";
 
 
 function ProductEditScreen({ match }) {
@@ -58,6 +59,9 @@ function ProductEditScreen({ match }) {
 
     }, [dispatch, product, productId, history, successUpdate])
 
+
+
+
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(updateProduct({
@@ -71,6 +75,24 @@ function ProductEditScreen({ match }) {
             description
         }))
     }
+
+
+	useEffect(() => {
+        const label = document.querySelector('.file-label');
+        const inputFile = document.getElementById('image-file');
+        
+        if (label && inputFile) {
+            const handleClick = () => {
+                inputFile.click();
+            };
+
+            label.addEventListener('click', handleClick);
+
+            return () => {
+                label.removeEventListener('click', handleClick);
+            };
+        }
+    }, []);
 
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0]
@@ -100,13 +122,13 @@ function ProductEditScreen({ match }) {
     }
 
     return (
-        <div>
-            <Link to='/admin/productlist'>
+        <div className={styles.totalForm}>
+            <Link className={styles.link} to='/admin/productlist'>
                 Go Back
             </Link>
 
             <FormContainer>
-                <h1>Edit Product</h1>
+                <h1 className={styles.formTitle}>Edit Product</h1>
                 {loadingUpdate && <Loader />}
                 {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
 
@@ -114,18 +136,18 @@ function ProductEditScreen({ match }) {
                     : (
                         <form onSubmit={submitHandler}>
 
-                                <label>Name</label>
+                                <label className={styles.label}>Name</label>
                                 <input
-
+				    className={styles.input}
                                     type='name'
                                     placeholder='Enter name'
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
 
-                                <label>Price</label>
+                                <label className={styles.label}>Price</label>
                                 <input
-
+                                    className={styles.input}
                                     type='number'
                                     placeholder='Enter price'
                                     value={price}
@@ -133,9 +155,9 @@ function ProductEditScreen({ match }) {
                                 />
 
 
-                                <label>Image</label>
+                                <label className={styles.label}>Image</label>
                                 <input
-
+				    className={styles.input}
                                     type='text'
                                     placeholder='Enter image'
                                     value={image}
@@ -143,47 +165,49 @@ function ProductEditScreen({ match }) {
                                 />
 
                                 <input
+			    	 className={styles.input}
 			    	    type="file"
                                     id='image-file'
                                     label='Choose File'
                                     custom
                                     onChange={uploadFileHandler}
                                 />
+			        <label htmlFor="image-file" className={styles.fileLabel}>Choose File</label>
 
                                 {uploading && <Loader />}
 
 
 
-                                <label>Brand</label>
+                                <label className={styles.label}>Brand</label>
                                 <input
-
+				 className={styles.input}
                                     type='text'
                                     placeholder='Enter brand'
                                     value={brand}
                                     onChange={(e) => setBrand(e.target.value)}
                                 />
 
-                                <label>Stock</label>
+                                <label className={styles.label}>Stock</label>
                                 <input
-
+				 className={styles.input}
                                     type='number'
                                     placeholder='Enter stock'
                                     value={countInStock}
                                     onChange={(e) => setCountInStock(e.target.value)}
                                 />
 
-                                <label>Category</label>
+                                <label className={styles.label}>Category</label>
                                 <input
-
+				 className={styles.input}
                                     type='text'
                                     placeholder='Enter category'
                                     value={category}
                                     onChange={(e) => setCategory(e.target.value)}
                                 />
 
-                                <label>Description</label>
+                                <label className={styles.label}>Description</label>
                                 <input
-
+				 className={styles.input}
                                     type='text'
                                     placeholder='Enter description'
                                     value={description}
@@ -191,9 +215,12 @@ function ProductEditScreen({ match }) {
                                 />
 
 
-                            <Button type='submit' variant='primary'>
+                            <button  
+			    className={styles.Button} 
+			    type='submit' 
+			    variant='primary'>
                                 Update
-                        </Button>
+                        </button>
 
                         </form>
                     )}

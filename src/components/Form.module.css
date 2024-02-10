@@ -1,3 +1,28 @@
+input[type="file"] {
+    display: none;
+}
+
+.fileLabel {
+	left: 5%;
+	display: block;
+	position: relative;
+	border-radius: 15px 15px 15px 15px;
+	background-color: #fff;
+	padding: 5px;
+	padding-left: 20px;
+	width: 100px;
+	margin: 5px;
+	letter-spacing: 0;
+}
+.fileLabel:hover {
+	cursor: pointer;
+	background-color: #b5b5b5;
+}
+.fileLabel:focus {
+	outline-color: #000;
+}
+
+
 .link {
 	text-decoration: none;
 	color: #757575;
