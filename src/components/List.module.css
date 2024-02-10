@@ -1,3 +1,18 @@
+.details {
+	display: inline-block;
+	border: none;
+	position: relative;
+	background-color: #ffffff;
+	font-family: 'Comic Neue', cursive;
+	padding: 10px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+.details:hover {
+	cursor: pointer;
+	background-color: #c5c5c5;
+}
+
 .createContainer {
 	position: relative;
 	display: inline-block;

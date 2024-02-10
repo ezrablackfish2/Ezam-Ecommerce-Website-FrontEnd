@@ -7,6 +7,8 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getOrderDetails, payOrder, deliverOrder } from '../actions/orderActions'
 import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConstants'
+import styles from "../components/Cart.module.css";
+
 
 function OrderScreen({ match }) {
 	const history = useNavigate();
@@ -75,149 +77,152 @@ function OrderScreen({ match }) {
         dispatch(deliverOrder(order))
     }
 
-    return loading ? (
-        <Loader />
-    ) : error ? (
-        <Message variant='danger'>{error}</Message>
-    ) : (
-                <div>
-                    <h1>Order: {order.Id}</h1>
-                    <Row>
-                        <Col md={8}>
-                            <ListGroup variant='flush'>
-                                <ListGroup.Item>
-                                    <h2>Shipping</h2>
-                                    <p><strong>Name: </strong> {order.user.name}</p>
-                                    <p><strong>Email: </strong><a href={`mailto:${order.user.email}`}>{order.user.email}</a></p>
-                                    <p>
-                                        <strong>Shipping: </strong>
-                                        {order.shippingAddress.address},  {order.shippingAddress.city}
-                                        {'  '}
-                                        {order.shippingAddress.postalCode},
-                                {'  '}
-                                        {order.shippingAddress.country}
-                                    </p>
+    
+return loading ? (
+    <div className="loader">Loading...</div>
+) : error ? (
+    <div className="message danger">{error}</div>
+) : (
+    <div className={styles.cart}>
+        <h1>Order: {order.Id}</h1>
+        <div>
+            <div className={styles.cartObjects}>
+                <ul className="list-group">
+                    <li className="list-group-item">
+                        <h2>Shipping</h2>
+                        <p><strong>Name: </strong> {order.user.name}</p>
+                        <p><strong>Email: </strong><a className={styles.backLink} href={`mailto:${order.user.email}`}>{order.user.email}</a></p>
+                        <p>
+                            <strong>Shipping: </strong>
+                            {order.shippingAddress.address}, {order.shippingAddress.city}
+                            {'  '}
+                            {order.shippingAddress.postalCode},
+                            {'  '}
+                            {order.shippingAddress.country}
+                        </p>
 
-                                    {order.isDelivered ? (
-                                        <Message variant='success'>Delivered on {order.deliveredAt}</Message>
-                                    ) : (
-                                            <Message variant='warning'>Not Delivered</Message>
-                                        )}
-                                </ListGroup.Item>
+                        {order.isDelivered ? (
+                            <div className="message success">Delivered on {order.deliveredAt}</div>
+                        ) : (
+                            <div className="message warning">Not Delivered</div>
+                        )}
+                    </li>
 
-                                <ListGroup.Item>
-                                    <h2>Payment Method</h2>
-                                    <p>
-                                        <strong>Method: </strong>
-                                        {order.paymentMethod}
-                                    </p>
-                                    {order.isPaid ? (
-                                        <Message variant='success'>Paid on {order.paidAt}</Message>
-                                    ) : (
-                                            <Message variant='warning'>Not Paid</Message>
-                                        )}
+                    <li className="list-group-item">
+                        <h2>Payment Method</h2>
+                        <p>
+                            <strong>Method: </strong>
+                            {order.paymentMethod}
+                        </p>
+                        {order.isPaid ? (
+                            <div className="message success">Paid on {order.paidAt}</div>
+                        ) : (
+                            <div className="message warning">Not Paid</div>
+                        )}
 
-                                </ListGroup.Item>
+                    </li>
 
-                                <ListGroup.Item>
-                                    <h2>Order Items</h2>
-                                    {order.orderItems.length === 0 ? <Message variant='info'>
-                                        Order is empty
-                            </Message> : (
-                                            <ListGroup variant='flush'>
-                                                {order.orderItems.map((item, index) => (
-                                                    <ListGroup.Item key={index}>
-                                                        <Row>
-                                                            <Col md={1}>
-                                                                <Image src={item.image} alt={item.name} fluid rounded />
-                                                            </Col>
+                    <li className="list-group-item">
+                        <h2>Order Items</h2>
+                        {order.orderItems.length === 0 ? <div className="message info">
+                            Order is empty
+                        </div> : (
+                            <ul className="list-group">
+                                {order.orderItems.map((item, index) => (
+                                    <li className={styles.cartItems} key={index}>
+                                        <div className={styles.cartItem}>
+                                            <div className={styles.cartImage}>
+                                                <img src={`https://ezam-ecommerce.onrender.com/${item.image}`} alt={item.name}  className={styles.cartImageImage} />
+                                            </div>
 
-                                                            <Col>
-                                                                <Link to={`/product/${item.product}`}>{item.name}</Link>
-                                                            </Col>
+                                            <div className={styles.cartPrice}>
+                                                <a className={styles.backLink} href={`/product/${item.product}`}>{item.name}</a>
+                                            </div>
 
-                                                            <Col md={4}>
-                                                                {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
-                                                            </Col>
-                                                        </Row>
-                                                    </ListGroup.Item>
-                                                ))}
-                                            </ListGroup>
-                                        )}
-                                </ListGroup.Item>
+                                            <div className={styles.cartSelect}>
+                                                {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
 
-                            </ListGroup>
+                </ul>
 
-                        </Col>
+            </div>
 
-                        <Col md={4}>
-                            <Card>
-                                <ListGroup variant='flush'>
-                                    <ListGroup.Item>
-                                        <h2>Order Summary</h2>
-                                    </ListGroup.Item>
+            <div  className={styles.subTotals}>
+                <div className="card">
+                    <ul className="list-group">
+                        <li className="list-group-item">
+                            <h2 className={styles.order}>Order Summary</h2>
+                        </li>
 
-                                    <ListGroup.Item>
-                                        <Row>
-                                            <Col>Items:</Col>
-                                            <Col>${order.itemsPrice}</Col>
-                                        </Row>
-                                    </ListGroup.Item>
+                        <li className="list-group-item">
+                            <div className="row">
+                                <div className={styles.cartName}>Items:</div>
+                                <div className={styles.cartName}>${order.itemsPrice}</div>
+                            </div>
+                        </li>
 
-                                    <ListGroup.Item>
-                                        <Row>
-                                            <Col>Shipping:</Col>
-                                            <Col>${order.shippingPrice}</Col>
-                                        </Row>
-                                    </ListGroup.Item>
+                        <li className="list-group-item">
+                            <div className="row">
+                                <div className={styles.cartName}>Shipping:</div>
+                                <div className={styles.cartName}>${order.shippingPrice}</div>
+                            </div>
+                        </li>
 
-                                    <ListGroup.Item>
-                                        <Row>
-                                            <Col>Tax:</Col>
-                                            <Col>${order.taxPrice}</Col>
-                                        </Row>
-                                    </ListGroup.Item>
+                        <li className="list-group-item">
+                            <div className="row">
+                                <div className={styles.cartName}>Tax:</div>
+                                <div className={styles.cartName}>${order.taxPrice}</div>
+                            </div>
+                        </li>
 
-                                    <ListGroup.Item>
-                                        <Row>
-                                            <Col>Total:</Col>
-                                            <Col>${order.totalPrice}</Col>
-                                        </Row>
-                                    </ListGroup.Item>
+                        <li className="list-group-item">
+                            <div className="row">
+                                <div className={styles.cartName}>Total:</div>
+                                <div className={styles.cartName}>${order.totalPrice}</div>
+                            </div>
+                        </li>
 
 
-                                    {!order.isPaid && (
-                                        <ListGroup.Item>
+                        {!order.isPaid && (
+                                        <div className={styles.paypal}>
                                             {loadingPay && <Loader />}
 
                                             {!sdkReady ? (
                                                 <Loader />
                                             ) : (
                                                     <PayPalButton
+						    	className={styles.paypal}
                                                         amount={order.totalPrice}
                                                         onSuccess={successPaymentHandler}
                                                     />
                                                 )}
-                                        </ListGroup.Item>
-                                    )}
-                                </ListGroup>
-                                {loadingDeliver && <Loader />}
-                                {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                                    <ListGroup.Item>
-                                        <Button
-                                            type='button'
-                                            className='btn btn-block'
-                                            onClick={deliverHandler}
-                                        >
-                                            Mark As Delivered
-                                        </Button>
-                                    </ListGroup.Item>
-                                )}
-                            </Card>
-                        </Col>
-                    </Row>
+                                        </div>
+                        )}
+                    </ul>
+                    {loadingDeliver && <div className="loader">Loading...</div>}
+                    {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                        <li className="list-group-item">
+                            <button
+                                type='button'
+                                className='btn btn-block'
+                                onClick={deliverHandler}
+                            >
+                                Mark As Delivered
+                            </button>
+                        </li>
+                    )}
                 </div>
-            )
+            </div>
+        </div>
+    </div>
+);
+
 }
 
 export default OrderScreen
