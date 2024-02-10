@@ -132,7 +132,7 @@ function ProductScreen({ match }) {
                                             <div>
                                                 <Button
                                                     onClick={addToCartHandler}
-                                                    className={styles.bagButton}
+                                                    className={userInfo ? styles.bagButton : styles.emptyBagButton}
                                                     disabled={product.countInStock == 0}
                                                     type='button'>
                                                     Add to Bag
@@ -199,7 +199,7 @@ function ProductScreen({ match }) {
 
                                                 </Form>
                                             ) : (
-                                                    <Message variant='info'>Please <Link to='/login'>login</Link> to write a review</Message>
+                                                    <Message variant='info'>Please <Link className={styles.link} to='/login'>login</Link> to write a review</Message>
                                                 )}
                                         </div>
                             </div>

@@ -25,6 +25,8 @@ import { listProducts } from '../actions/productActions'
 import { useNavigate, useLocation } from "react-router-dom"
 import Rating from '../components/Rating'
 import Paginate from '../components/Paginate'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 
 function Home() {
@@ -41,6 +43,7 @@ function Home() {
 	const contentRef = useRef(null);
 	const productsPerPage = 20;
 	const { error, loading, page, pages } = productList
+
 	
 	let keyword = location.search
 	
@@ -138,7 +141,13 @@ function Home() {
 	document.title = "EZam Ecommerce Website";
 
 
+	
+
 	return (
+	<>
+	{productList.loading ? <Loader />
+                : productList.error ? <Message variant='danger'>{productList.error}</Message>
+                    :
 	<div className={styles.home}>
 	<div className={styles.promotion}>
 		Unlock premium products at unbeatable prices! Shop now at EZam Ecommerce for high-quality goods without breaking the bank
@@ -197,7 +206,14 @@ function Home() {
 		</div>
 		<div className={styles.latestProducts}>
 		{
-			productList.products.map((product, index) => (
+			
+			productList.products
+				.filter((game) => {
+				return hoveredCategory.toLowerCase() === ""
+				? game
+				: game.category.toLowerCase().includes(hoveredCategory.toLowerCase());
+				})
+				.map((product, index) => (
 		<div className={`${styles.latestProduct} ${index % 2 === 0 ? styles.white : styles.black}`} key={product.id}>
 		<a className={styles.latestProductLink} href={`/product/${product._id}`}>
 		<div className={styles.productName}>{product.name}</div>
@@ -209,7 +225,7 @@ function Home() {
 			src={`https://ezam-ecommerce.onrender.com/${product.image}`}
 				/>
 		</div>
-		<div className="my-3">
+		<div className={styles.critic}>
                         <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
                     </div>
 		</a>
@@ -229,6 +245,8 @@ function Home() {
 				            )}
 		</div>
 		</div>
+	}
+		</>
 		);
 	}
 

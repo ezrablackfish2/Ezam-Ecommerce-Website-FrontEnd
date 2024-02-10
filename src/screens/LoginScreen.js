@@ -37,7 +37,7 @@ function LoginScreen( ) {
         <div className={styles.totalForm}>
             <h1 className={styles.formTitle}>Sign In</h1>
             {error && <div className="error-message">{error}</div>}
-            {loading && <div className="loader">Loading...</div>}
+            {loading && <Loader />}
 
             <form onSubmit={submitHandler}>
                 <label className={styles.label} htmlFor="email">Email Address</label>

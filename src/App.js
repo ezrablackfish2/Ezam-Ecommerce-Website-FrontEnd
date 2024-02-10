@@ -27,8 +27,8 @@ function App() {
   return (
     <div className="all">
 	  
-	  <Header />
 	  <Router>
+	  <Header />
 	  	  <Routes>
 	  	  	<Route index element={<Home />} />
 	  	  	<Route path="/home" element={<HomeScreen />} />
@@ -52,8 +52,8 @@ function App() {
 
           		<Route path='/admin/orderlist' element={<OrderListScreen />} />
 	  	  </Routes>
-	  	  </Router>
 	  <Footer />
+	  	  </Router>
     </div>
   );
 }

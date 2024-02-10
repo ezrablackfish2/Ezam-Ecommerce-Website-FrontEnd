@@ -22,6 +22,8 @@ function CartScreen({ match }) {
 
     	const cart = useSelector(state => state.cart)
     	const { cartItems } = cart
+	const userLogin = useSelector(state => state.userLogin)
+    	const { userInfo } = userLogin
 
     useEffect(() => {
         if (productId) {
@@ -35,7 +37,10 @@ function CartScreen({ match }) {
     }
 
     const checkoutHandler = () => {
-        history('/login?redirect=shipping')
+	    userInfo ? 
+		    history('/shipping')
+	    :
+		    history('/login')
     }
 
     return (

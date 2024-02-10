@@ -47,7 +47,7 @@ function RegisterScreen() {
             <h1 className={styles.formTitle}>Sign Up</h1>
             {message && <div className="error-message">{message}</div>}
             {error && <div className="error-message">{error}</div>}
-            {loading && <div className="loader">Loading...</div>}
+            {loading && <Loader />}
 
             <form onSubmit={submitHandler}>
                 <label className={styles.label}  htmlFor="name">Name</label>
@@ -90,6 +90,7 @@ function RegisterScreen() {
                     id="passwordConfirm"
                     placeholder="Confirm Password"
                     value={confirmPassword}
+	    	    onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
 

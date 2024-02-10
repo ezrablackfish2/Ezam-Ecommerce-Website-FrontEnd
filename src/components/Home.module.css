@@ -1,3 +1,9 @@
+
+
+.critic {
+	display: none;
+}
+
 .imageContainer {
 	position: relative;
 	display: inline-block;

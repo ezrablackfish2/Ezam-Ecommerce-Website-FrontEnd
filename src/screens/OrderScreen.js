@@ -79,7 +79,7 @@ function OrderScreen({ match }) {
 
     
 return loading ? (
-    <div className="loader">Loading...</div>
+    	<Loader />
 ) : error ? (
     <div className="message danger">{error}</div>
 ) : (

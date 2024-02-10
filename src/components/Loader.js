@@ -1,20 +1,13 @@
 import React from 'react'
 import { Spinner } from 'react-bootstrap'
+import loading from "../public/loading.gif";
+import styles from "./loading.module.css";
 
 function Loader() {
     return (
-        <Spinner
-            animation='border'
-            role='status'
-            style={{
-                height: '100px',
-                width: '100px',
-                margin: 'auto',
-                display: 'block'
-            }}
-        >
-            <span className='sr-only'>Loading...</span>
-        </Spinner>
+	<div className={styles.loading}>
+       <img src={loading} className={styles.loadingImage}/> 
+	</div>
     )
 }
 

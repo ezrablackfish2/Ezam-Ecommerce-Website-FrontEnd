@@ -1,7 +1,13 @@
 import styles from "./Header.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategoriesOn, setHoveredCategory, setCartOn, setSearchOn, setMenuOn  } from "../features/headerSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { logout } from '../actions/userActions'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPenToSquare, faCheck, faXmark, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 import logo from "../public/logo3.png";
 import search from "../public/search.png";
@@ -9,6 +15,8 @@ import cart from "../public/cart.png";
 import menu from "../public/menu.png";
 import order from "../public/order.png";
 import user from "../public/user.png";
+import users from "../public/users.png";
+import product from "../public/product.png";
 
 
 
@@ -31,6 +39,9 @@ const Header = () => {
 
 
 	const dispatch = useDispatch();
+	const [keyword, setKeyword] = useState('');
+    	const history = useNavigate();
+	const locate = useLocation();
 	const searchOn = useSelector(state => state.headers.searchOn);
 	const categoriesOn = useSelector(state => state.headers.categoriesOn);
 	const hoveredCategory = useSelector(state => state.headers.hoveredCategory);
@@ -91,13 +102,32 @@ const Header = () => {
 		    dispatch(setCartOn(false));
 		    dispatch(setMenuOn(false));
 	};
+	const categoryRemover = () => {
+		dispatch(setHoveredCategory(""));
+	}
+
+	const userLogin = useSelector(state => state.userLogin)
+    	const { userInfo } = userLogin
+
+
+    	const logoutHandler = () => {
+    	    dispatch(logout())
+    }
+	const submitHandler = (e) => {
+        e.preventDefault();
+        if (keyword) {
+            history(`/?keyword=${keyword}&page=1`);
+        } else {
+            history(locate.pathname);
+        }
+    };
 
 	return (
         <div className={`${styles.header} ${searchOn || categoriesOn || cartOn? styles.white : ''}`}>
             <div className={styles.categories}>
 		<a href="/">
                 <img
-		    onMouseEnter={handleCategoryMouseLeave}
+		    onMouseEnter={handleCategoryMouseLeave, categoryRemover}
                     className={styles.logo}
                     src={logo}
                     alt="Logo"
@@ -107,7 +137,7 @@ const Header = () => {
 			<div onMouseEnter={() => handleCategory(category)} className={styles.category} key={category}>{category}</div>
 		))}
 		<img
-	            onMouseEnter={handleCategoryMouseLeave}
+	            onMouseEnter={handleCategoryMouseLeave, categoryRemover}
 		    onClick={handleSearchClick}
                     className={styles.searchImage}
                     src={search}
@@ -115,7 +145,7 @@ const Header = () => {
                 />
 		
 		<img
-		    onMouseEnter={handleCartMouseLeave}
+		    onMouseEnter={handleCartMouseLeave, categoryRemover}
 		    onClick={handleCartClick}	
                     className={styles.cartImage}
                     src={cart}
@@ -133,12 +163,17 @@ const Header = () => {
 		className={`${styles.dropDownSearch} ${searchOn ? styles.visible : ''}`}
 		onMouseLeave={handleSearchMouseLeave}
 		>
-		<div><img		
+		<div>
+		<form onSubmit={submitHandler} className={styles.searchform}>
+		<button type="submit" className={styles.searchButton2}>
+		<img		
                     className={styles.searchButton}
                     src={search}
                     alt="Search"
                 />
-		<input id="search" placeholder={`Search ezam`} type="text" className={styles.searchBar} />
+		</button>
+    <input id="search" placeholder={`Search ezam`} type="text" onChange={(e) => setKeyword(e.target.value)} className={styles.searchBar} />
+</form>
 		</div></div>
 
 		<div 
@@ -146,14 +181,16 @@ const Header = () => {
 		onMouseLeave={handleSearchMouseLeave}
 		>
 		<div className={styles.cart}>
-		Your Bag is Empty
+
+		<a className={styles.cartLink}href="/cart">Cart</a>
 		</div>
 		<div className={styles.cartDetails}>
-		<div className={styles.cart1}>
-		sign in to see what you have got
-		</div>
-		<div className={styles.cart2}> My porfile
+		<div className={styles.cart2}> 
+		<div className={styles.adminTitle}>My porfile</div>
+		{!userInfo ? (
+		<>
 		<div className={styles.cart2}>
+		<a className={styles.cartLink} href="/login">
 		<img
 			className={styles.cartImages}
 			src={order}>
@@ -161,8 +198,10 @@ const Header = () => {
 		<div className={styles.cartTexts}>
 			Orders
 		</div>
+		</a>
 		</div>
 		<div className={styles.cart2}>
+		<a className={styles.cartLink} href="/login">
 		<img
 			className={styles.cartImages}
 			src={user}>
@@ -170,7 +209,68 @@ const Header = () => {
 		<div className={styles.cartTexts}>
 			Sign In
 		</div>
+		</a>
 		</div>
+		</>
+		) : (
+		<div>
+			<a className={styles.headerLink} href="/profile">
+			<img
+				className={styles.cartImages}
+				src={user}>
+			</img>
+			<span className={styles.profileSpan}>Profile</span>
+			</a>
+			<div>
+			<button 
+				className={styles.logoutButton}
+				onClick={logoutHandler}>
+			<FontAwesomeIcon className={styles.logoutIcon} icon={faRightFromBracket} />
+				<span className={styles.logoutText}>Log out</span>
+			</button>
+			</div>
+		</div>
+		)}
+
+		{ userInfo && userInfo.isAdmin && (
+			<div>
+			<div className={styles.adminTitle}>Admin</div>
+			<div>
+			<a className={styles.headerLink} href="/admin/userlist">
+			<img
+			className={styles.cartImages}
+			src={users}>
+			</img>
+			<div className={styles.adminText}>
+			Users
+			</div>
+			</a>
+			</div>
+			<div>
+			<a className={styles.headerLink} href="/admin/productlist">
+			<img
+			className={styles.cartImages}
+			src={product}>
+			</img>
+			<div className={styles.adminText}>
+			Products
+			</div>
+			</a>
+			</div>
+			<div>
+			
+			<a className={styles.headerLink} href="/admin/orderlist">
+			<img
+			className={styles.cartImages}
+			src={order}>
+			</img>
+			<div className={styles.adminText}>
+			Orders
+			</div>
+			</a>
+			</div>
+			</div>
+		)}
 		</div>
 		</div>
 		</div>

@@ -9,7 +9,7 @@ const headerSlice = createSlice({
 		categoriesOn: false,
 		cartOn: false,
 		menuOn: false,
-		hoveredCategory: [],
+		hoveredCategory: "",
 
 	},
 	reducers: {
