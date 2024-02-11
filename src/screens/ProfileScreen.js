@@ -69,6 +69,8 @@ function ProfileScreen() {
         }
 
     }
+	document.title = "Profile";
+
     return (
         <div class="row">
     <div  className={styles.totalForm}>
@@ -125,7 +127,7 @@ function ProfileScreen() {
                 />
             </div>
 
-            <button className={styles.Button} type='submit' class="btn btn-primary">
+            <button className={styles.Button} type='submit'>
                 Update
             </button>
 

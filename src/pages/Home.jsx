@@ -185,6 +185,7 @@ function Home() {
 		{
 			categories.map((image, index) => (
 		<img
+		onMouseEnter={() => dispatch(setHoveredCategory(""))}
 		onClick={() => dispatch(setHoveredCategory(image.category))}
 		key={index}
 		className={styles.categoryImage}

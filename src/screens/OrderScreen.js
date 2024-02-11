@@ -48,6 +48,8 @@ function OrderScreen({ match }) {
         document.body.appendChild(script)
     }
 
+	document.title = "Order";
+
     useEffect(() => {
 
         if (!userInfo) {

@@ -121,6 +121,8 @@ function ProductEditScreen({ match }) {
         }
     }
 
+	document.title = `${product.name} edit`;
+
     return (
         <div className={styles.totalForm}>
             <Link className={styles.link} to='/admin/productlist'>

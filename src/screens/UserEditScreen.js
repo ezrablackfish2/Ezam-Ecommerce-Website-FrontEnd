@@ -51,6 +51,8 @@ function UserEditScreen({ match }) {
         dispatch(updateUser({ _id: user._id, name, email, isAdmin }))
     }
 
+	document.title = `${name} edit`
+
     return (
         <div className={styles.totalForm}>
             <Link className={styles.link} to='/admin/userlist'>

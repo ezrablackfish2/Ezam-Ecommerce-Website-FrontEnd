@@ -50,6 +50,8 @@ function PlaceOrderScreen() {
         }))
     }
 
+	document.title = "Place Order";
+
     
 return (
 	<>

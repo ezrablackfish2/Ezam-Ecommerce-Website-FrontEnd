@@ -32,6 +32,7 @@ function LoginScreen( ) {
         e.preventDefault()
         dispatch(login(email, password))
     }
+	document.title = "Login";
 
     return (
         <div className={styles.totalForm}>

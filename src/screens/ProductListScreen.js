@@ -60,6 +60,8 @@ function ProductListScreen({ match }) {
         dispatch(createProduct())
     }
 
+	document.title = "Product List";
+
     return (
         <div className={styles.lister}>
                     <h1 className={styles.tableTitle}>Products</h1>

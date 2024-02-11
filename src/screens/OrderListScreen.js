@@ -32,6 +32,7 @@ function OrderListScreen() {
 
     }, [dispatch, history, userInfo])
 
+	document.title = "Order List";
 
     return (
         <div className={styles.lister}>

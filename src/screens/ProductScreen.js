@@ -59,9 +59,8 @@ function ProductScreen({ match }) {
         }
         ))
     }
-	console.log(product.name);
-	console.log(product.image);
 
+	document.title = product.name;
     return (
         <div className={styles.detail}>
             <Link to='/' className={styles.back}>Go Back</Link>

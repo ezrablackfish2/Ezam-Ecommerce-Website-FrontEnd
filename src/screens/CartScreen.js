@@ -43,6 +43,7 @@ function CartScreen({ match }) {
 		    history('/login')
     }
 
+	document.title = "Cart";
     return (
         <div className={styles.cart}>
             <div className={styles.cartObjects}>

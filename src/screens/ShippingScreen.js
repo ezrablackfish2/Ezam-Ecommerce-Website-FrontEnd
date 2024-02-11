@@ -28,6 +28,8 @@ function ShippingScreen() {
         history('/payment')
     }
 
+	document.title = "Shipping";
+
     return (
 	    <>
 	    <div>

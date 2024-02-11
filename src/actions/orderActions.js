@@ -68,6 +68,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
 
 
     } catch (error) {
+	    console.log("the error", error);
         dispatch({
             type: ORDER_CREATE_FAIL,
             payload: error.response && error.response.data.detail

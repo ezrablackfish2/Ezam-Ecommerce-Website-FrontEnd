@@ -29,6 +29,8 @@ function PaymentScreen() {
         history('/placeorder')
     }
 
+	document.title = "Payment";
+
     return (
 	    <>
 	    <div>

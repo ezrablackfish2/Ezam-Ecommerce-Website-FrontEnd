@@ -43,6 +43,8 @@ function UserListScreen() {
         }
     }
 
+	document.title = "User List";
+
     return (
         <div className={styles.lister}>
             <h1 className={styles.tableTitle}>Users</h1>
