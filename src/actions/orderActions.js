@@ -49,7 +49,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.post(
-            `http://127.0.0.1:8000/api/orders/add/`,
+            `https://ezam-ecommerce.onrender.com/api/orders/add/`,
             order,
             config
         )
