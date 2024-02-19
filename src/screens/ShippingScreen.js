@@ -48,8 +48,21 @@ function ShippingScreen() {
                             type='text'
                             id='address'
                             placeholder='Enter address'
-                            value={address}
+                            value={address ? address : ''}
                             onChange={(e) => setAddress(e.target.value)}
+                        />
+                    </div>
+	    		
+	    		<div>
+                        <label className={styles.label} htmlFor='country'>City</label>
+                        <input
+	    		    className={styles.input}
+                            required
+                            type='text'
+                            id='country'
+                            placeholder='Enter country'
+                            value={country ? country : ''}
+                            onChange={(e) => setCountry(e.target.value)}
                         />
                     </div>
 
@@ -61,7 +74,7 @@ function ShippingScreen() {
                             type='text'
                             id='city'
                             placeholder='Enter city'
-                            value={city}
+                            value={city ? city : ''}
                             onChange={(e) => setCity(e.target.value)}
                         />
                     </div>
@@ -74,7 +87,7 @@ function ShippingScreen() {
                             type='text'
                             id='postalCode'
                             placeholder='Enter postal code'
-                            value={postalCode}
+                            value={postalCode ? postalCode : ''}
                             onChange={(e) => setPostalCode(e.target.value)}
                         />
                     </div>
